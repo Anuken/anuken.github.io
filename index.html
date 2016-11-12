@@ -1,6 +1,7 @@
 <html>
 <head>
 <style type="text/css">
+/*
 #a{
 position:absolute;
 z-index:-1;
@@ -52,6 +53,74 @@ position: fixed;
 transform: scale(3, 3);
 }
 
+*/
+
+.slideshow {
+  position: relative;
+  overflow: hidden;
+}
+.image1 {
+  z-index:-1;
+  background: url(fog.png);
+  position: fixed;
+  image-rendering: pixelated;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  animation: slideshow 9s linear infinite;
+  transform: scale(3, 3);
+}
+.image2 {
+  z-index:-1;
+  background: url(fog1.png);
+  position: fixed;
+  image-rendering: pixelated;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  animation: slideshow 7s linear infinite;
+  transform: scale(3, 3);
+}
+.image3 {
+  z-index:-1;
+  background: url(fog2.png);
+  position: fixed;
+  image-rendering: pixelated;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  animation: slideshow 13s linear infinite;
+  transform: scale(3, 3);
+}
+.image4 {
+  z-index:-1;
+  background: url(fog3.png);
+  position: fixed;
+  image-rendering: pixelated;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  animation: slideshow 20s linear infinite;
+  transform: scale(3, 3);
+}
+
+@keyframes slideshow {
+  0%    { background-position: 0 0; }
+  100%  { background-position: 300 0; }
+}
+
 body {
     margin: 0;
     text-align: center;
@@ -62,35 +131,17 @@ body {
 
 
 <script>
-window.onload = function() {
-  move();
-};
-
-function move() {
-  var a = document.getElementById("a");
-  var b = document.getElementById("b");
-  var c = document.getElementById("c");
-  var d = document.getElementById("d");
-  var pos = 0;
-  var id = setInterval(frame, 10);
-  function frame() {
-     pos++;
-     a.style.backgroundPosition = pos*2 + 'px' + ' 0px';
-     b.style.backgroundPosition = pos + 'px' + ' 0px';
-     c.style.backgroundPosition = pos/1.4 + 'px' + ' 0px';
-     d.style.backgroundPosition = pos/4 + 'px' + ' 0px';
-  }
-}
+//js things here
 </script>
 
 </head>
 
 <body>
 
-<div id="a"></div>
-<div id="b"></div>
-<div id="c"></div>
-<div id="d"></div>
+<div class="image1"></div>
+<div class="image2"></div>
+<div class="image3"></div>
+<div class="image4"></div>
 
 
 </body>
