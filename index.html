@@ -75,10 +75,10 @@ function move() {
   var id = setInterval(frame, 10);
   function frame() {
      pos++;
-     a.style.left = pos*2 + 'px';
-     b.style.left = pos + 'px';
-     c.style.left = pos/1.4 + 'px';
-     d.style.left = pos/4 + 'px';
+     a.style.backgroundPosition = pos*2 + 'px' + ' 0px';
+     b.style.backgroundPosition = pos + 'px' + ' 0px';
+     c.style.backgroundPosition = pos/1.4 + 'px' + ' 0px';
+     d.style.backgroundPosition = pos/4 + 'px' + ' 0px';
   }
 }
 </script>
