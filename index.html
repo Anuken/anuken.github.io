@@ -1,1 +1,97 @@
-wew
+<html>
+<head>
+<style type="text/css">
+#a{
+position:absolute;
+z-index:-1;
+image-rendering: pixelated;
+background-image: url('fog.png');
+width:2000px;
+height:2000px;
+overflow-x:hidden;
+overflow-y:hidden;
+position: fixed;
+margin: 0;
+padding: 0;
+transform: scale(3, 3);
+}
+#b{
+position:absolute;
+z-index:-1;
+image-rendering: pixelated;
+background-image: url('fog1.png');
+width:2000px;
+height:2000px;
+overflow-x:hidden;
+overflow-y:hidden;
+position: fixed;
+transform: scale(3, 3);
+}
+#c{
+position:absolute;
+z-index:-1;
+image-rendering: pixelated;
+background-image: url('fog2.png');
+width:2000px;
+height:2000px;
+overflow-x:hidden;
+overflow-y:hidden;
+position: fixed;
+transform: scale(3, 3);
+}
+#d{
+position:absolute;
+z-index:-1;
+image-rendering: pixelated;
+background-image: url('fog3.png');
+width:2000px;
+height:2000px;
+overflow-x:hidden;
+overflow-y:hidden;
+position: fixed;
+transform: scale(3, 3);
+}
+
+body {
+    margin: 0;
+    text-align: center;
+	background-color: #95a6c1
+}
+
+</style>
+
+
+<script>
+window.onload = function() {
+  move();
+};
+
+function move() {
+  var a = document.getElementById("a");
+  var b = document.getElementById("b");
+  var c = document.getElementById("c");
+  var d = document.getElementById("d");
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+     pos++;
+     a.style.left = pos*2 + 'px';
+     b.style.left = pos + 'px';
+     c.style.left = pos/1.4 + 'px';
+     d.style.left = pos/4 + 'px';
+  }
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="a"></div>
+<div id="b"></div>
+<div id="c"></div>
+<div id="d"></div>
+
+
+</body>
+</html>
