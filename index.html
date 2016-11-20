@@ -1,7 +1,14 @@
 <html>
 <head>
 <link rel="stylesheet" href="styles.css">
+<script>
+function set(name){
+    document.getElementById('frame').src = name;
+}
+</script>
 </head>
+
+
 
 <body>
 <div class="image1"></div>
@@ -15,10 +22,9 @@
 <div class="header">A Random Site</div>
 </h2>
 
-<div class="button" style="border-top-left-radius:6px; border-bottom-left-radius:6px;">Button</div><div class="button">Button</div><div class="button">Button</div><div class="button" style="border-top-right-radius:6px; border-bottom-right-radius:6px;">Button</div>
-
-<p style= "font-family:ExpresswayRoman, Helvetica, Arial, sans-serif;">text</p>
-
+<a class="button" onclick="set('page1.html')" style="border-top-left-radius:6px; border-bottom-left-radius:6px;">Things</a><a class="button" onclick="set('page2.html')">More Things</a><a class="button" onclick="set('page3.html')">Other Things</a><a class="button" onclick="set('page4.html')">Many Things</a><a class="button" onclick="set('page5.html')" style="border-top-right-radius:6px; border-bottom-right-radius:6px;">Different Things</a>
+<div w3-include-html="test.html"></div>
+<iframe src="page1.html" id="frame" style="border:none;"></iframe>
 
 </div>
 </body>
