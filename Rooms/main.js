@@ -67,7 +67,7 @@ var Main = (function () {
         player.sprite.x = game.width / 2;
         player.sprite.y = game.height / 2;
         list.push(player);
-        socket = io.connect('http://66.249.79.122:7576');
+        socket = io.connect('https://66.249.79.122:7576');
         console.log("Connecting to server...");
         socket.on('connect', Main.onSocketConnected);
         socket.on('disconnect', Main.onSocketDisconnect);
