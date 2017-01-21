@@ -1,0 +1,66 @@
+<script src = "script.js"></script>
+<script src = "math.min.js"></script>
+<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+<style>
+
+.text{
+    border: none;
+    resize: none;
+    outline: none;
+    height: 24px;
+    width: 100%;
+    font-family: ExpresswayRoman, Helvetica, Arial, sans-serif;
+    font-size: 16;
+    background-color: transparent;
+    color: transparent;
+    overflow: hidden;
+}
+
+.container_row {
+    height: 30px;
+    margin: 0;
+    position: relative;
+}
+
+::-moz-selection { 
+    background: #91bbff; 
+    color: transparent;
+}
+::selection { 
+    background: #91bbff; 
+    color: transparent;
+}
+
+.layer {
+    position: absolute;
+    z-index: 2;
+    left: 2;
+    top: 2;
+    height: 24px;
+    width: 100%;
+    color: white;
+    font-family: ExpresswayRoman, Helvetica, Arial, sans-serif;
+    font-size: 16;
+    border-bottom: 2px solid #afceff;
+    pointer-events: none;
+}
+
+body{
+    background-color: #00101c;
+}
+
+@font-face {
+    font-family: ExpresswayRoman;
+    src: url(expressway.ttf);
+    font-weight:400;
+}
+
+</style>
+<body onload="init();">
+  <div class="container_row">
+    <textarea class="text" id="formarea" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off">sin(1.2*ang)^2 + cos(6*ang+delta/100)^3</textarea>
+    <div class="layer" id="cover"></div>
+  </div>
+  
+  <canvas id="canvas" width="600" height="600"></canvas>
+</body>
