@@ -6,7 +6,7 @@ var offsety = 300;
 var max = Math.PI*10;
 var step = 0.01;
 var scale = 100;
-var time = 0;
+var dtime = 0;
 var textarea;
 var form;
 var formfunc;
@@ -99,7 +99,7 @@ function resize() {
 }
 
 function doTick(){
-    time ++;
+    dtime ++;
     render();   
 }
 
@@ -139,5 +139,5 @@ function draw(r1, r2, a){
 }
 
 function formula(angle){
-	return formfunc.eval({ang: angle, time: this.time});
+	return formfunc.eval({ang: angle, time: dtime});
 }
