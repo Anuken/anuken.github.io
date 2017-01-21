@@ -68,7 +68,7 @@ function updateTextColors(){
     var text = textarea;
     var str = text.value,
 
-    map = {'ang': "#ff6d85", 'delta': "#97e59c", 'sin': "#fcad2d", 'cos': "#fcad2d"};
+    map = {'ang': "#ff6d85", 'time': "#97e59c", 'sin': "#fcad2d", 'cos': "#fcad2d"};
 
     var reg = "";
 
@@ -139,5 +139,5 @@ function draw(r1, r2, a){
 }
 
 function formula(angle){
-	return formfunc.eval({ang: angle, delta: time});
+	return formfunc.eval({ang: angle, time: this.time});
 }
