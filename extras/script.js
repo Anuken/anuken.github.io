@@ -49,7 +49,7 @@ function textChange(){
         form = textarea.value;
         console.log(textarea.value);
         var out = math.compile(form);
-        out.eval({ang: 0, delta: 0})
+        out.eval({ang: 0, time: 0})
         formfunc = out;
         document.getElementById("cover").style.borderBottomColor = "#afceff";
     }catch (e){
