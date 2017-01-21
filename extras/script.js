@@ -68,7 +68,7 @@ function updateTextColors(){
     var text = textarea;
     var str = text.value,
 
-    map = {'ang': "#ff6d85", 'time': "#97e59c", 'sin': "#fcad2d", 'cos': "#fcad2d"};
+    map = {'ang': "#ff6d85", 'time': "#97e59c", 'sin': "#fcad2d", 'cos': "#fcad2d", 'tan': "#fcad2d"};
 
     var reg = "";
 
