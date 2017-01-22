@@ -1,28 +1,38 @@
-<!DOCTYPE html>
 <html>
 <title>[WIP]</title>
 
 <link rel="stylesheet" href="styles.css">
 <script src = "script.js"></script>
-<body>
+<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 
-<ul class="w3-navbar w3-black" >
-  <li><a href="javascript:void(0)" onclick="openTab('One')"><h1>One</h1></a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('Two')"><h1>Two</h1></a></li>
-  <li><a href="javascript:void(0)" onclick="openTab('Three')"><h1>Three</h1></a></li>
+<body onload="init()">
+
+<canvas id="canvas" width="600" height="600"></canvas>
+<!--
+<ul>
+  <li><a onclick="openTab('One')">One</a></li>
+  <li><a onclick="openTab('Two')">Two</a></li>
+  <li><a onclick="openTab('Three')">Three</a></li>
+  <li><a onclick="openTab('Four')">Four</a></li>
 </ul>
 
-<div id="One" class="w3-container tab">
-  <p>text1</p>
+
+<div id="One" class="tab">
+  <canvas id="canvas" width="600" height="600"></canvas>
 </div>
 
-<div id="Two" class="w3-container tab" style="display:none">
+<div id="Two" class="tab" style="display:none">
   <p>text2</p>
 </div>
 
-<div id="Three" class="w3-container tab" style="display:none">
+<div id="Three" class="tab" style="display:none">
   <p>text3</p>
 </div>
+
+<div id="Four" class="tab" style="display:none">
+  <p>text4</p>
+</div>
+-->
 
 </body>
 </html>
