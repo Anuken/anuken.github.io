@@ -1,6 +1,7 @@
 
 var stage;
 var background;
+var center;
 var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
@@ -11,6 +12,7 @@ function init() {
     stage = new createjs.Stage("canvas");
 
     stage.enableMouseOver();
+    stage.mouseMoveOutside = true;
 
     createjs.Ticker.addEventListener("tick", handleTick);
     createjs.Ticker.addEventListener("tick", stage);
@@ -25,8 +27,6 @@ function init() {
 
     background = new createjs.Shape();
     stage.addChild(background);
-
-    stage.mouseMoveOutside = true;
 
     var titletext = new createjs.Text(title, "bold 30px Overpass Mono", "#e7f5fe");
     titletext.x = w;
@@ -45,7 +45,7 @@ function init() {
     for(var x = 0; x < maxx; x ++){
         for(var y = -1; y < maxy; y ++){
             background.graphics.beginFill( createjs.Graphics.getHSL((1.3+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 25+y/maxy*25));
-            background.graphics.drawPolyStar(x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize)*0, y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
+            background.graphics.drawPolyStar(x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize), y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
         }   
     }
 
@@ -67,8 +67,23 @@ function init() {
     background.graphics.drawPolyStar(w, h-offset, 210, 3, 0, 180/6);
 
     background.cache(0, 0, w*2, h*2);
-        
 
+    center = newShape(135, 206, 250, function(){
+        center.graphics.clear();
+
+        center.fill();
+
+        center.graphics.drawPolyStar(0, 0, 50, 3, 0, 180/6);
+    });
+
+    center.x = w;
+    center.y = h-offset;
+    center.rotation = 180;
+
+    center.update();
+
+    stage.addChild(center);
+        
     var tabs = 3;
     var spacing = 210;
     var rad = 150;
@@ -84,51 +99,45 @@ function init() {
         container.y = stage.canvas.height/2 - offset;
         container.name = "tab" + i;
 
-        const shape = new createjs.Shape();
+        const shape = newShape(135, 206, 250, function(){
+            shape.graphics.clear();
+            
+            shape.fill();
+
+            shape.graphics.drawPolyStar(0, 0, rad, 3, 0, -180/6);
+        });
+
         shape.cursor = "pointer";
         shape.x = Math.sin(2*Math.PI/tabs*i)*spacing;
         shape.y = Math.cos(2*Math.PI/tabs*i)*spacing;
 
-        shape.redOffset = 135;
-        shape.greenOffset = 206;
-        shape.blueOffset = 250;
-
-        //var filter = new createjs.ColorFilter(0.53, 0.8, 0.98, 1);
-       // shape.filters = [filter];
-        const draw = function(){
-            var color = createjs.Graphics.getRGB( 
-            parseInt(shape.redOffset), 
-            parseInt(shape.greenOffset), 
-            parseInt(shape.blueOffset), 
-            1);
-
-            shape.graphics.beginFill(color);
-
-            shape.graphics.drawPolyStar(0, 0, rad, 3, 0, -180/6);
-        }
-
-        shape.updateColor = draw;
-
-        draw();
+        shape.update();
 
         const index = i;
 
         shape.on("mouseover", function(evt){
-            createjs.Tween.get(container)
+            tween(container)
             .to({ scaleX: 1.1, scaleY: 1.1 }, smooth, createjs.Ease.getPowInOut(1.5));
 
-            createjs.Tween.get(shape)
-            .to({ redOffset: 255 }, smooth, createjs.Ease.getPowInOut(1.5)).addEventListener('change', shape.updateColor);
+            tween(shape)
+            .to({ r: 255 }, smooth, createjs.Ease.getPowInOut(1.5));
+
+            tween(center)
+            .to({ r: 255, b: 250, rotation: 0, scaleX: 2, scaleY : 2}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
         shape.on("mouseout", function(evt){
             createjs.Tween.removeTweens(container);
+            createjs.Tween.removeTweens(center);
 
-            createjs.Tween.get(container)
+            tween(container)
             .to({ scaleX: 1, scaleY: 1 }, smooth/1.5, createjs.Ease.getPowInOut(1.5));
 
-             createjs.Tween.get(shape)
-            .to({ redOffset: 135 }, smooth, createjs.Ease.getPowInOut(1.5)).addEventListener('change', shape.updateColor);
+            tween(shape)
+            .to({ r: 135 }, smooth, createjs.Ease.getPowInOut(1.5));
+
+            tween(center)
+            .to({ r: 135, b: 250, rotation: 180, scaleX: 1, scaleY : 1}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
         container.addChild(shape);
@@ -143,6 +152,37 @@ function init() {
     }
 
     stage.update();
+}
+
+function tween(shape){
+    const t = createjs.Tween.get(shape);
+    if(shape.update != undefined)
+    t.addEventListener('change', shape.update);
+    return t;
+}
+
+function newShape(red, green, blue, updateFunction){
+    const shape = new createjs.Shape();
+
+    shape.r = red;
+    shape.g = green;
+    shape.b = blue;
+
+    shape.modColor = function(){
+        return createjs.Graphics.getRGB( 
+        parseInt(shape.r), 
+        parseInt(shape.g), 
+        parseInt(shape.b), 
+        1);
+    }
+
+    shape.fill = function(){
+        shape.graphics.beginFill(shape.modColor());
+    }
+
+    shape.update = updateFunction;
+
+    return shape;
 }
 
 function handleTick() {
