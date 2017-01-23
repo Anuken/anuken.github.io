@@ -44,7 +44,7 @@ function init() {
 
     for(var x = 0; x < maxx; x ++){
         for(var y = -1; y < maxy; y ++){
-            background.graphics.beginFill( createjs.Graphics.getHSL((1.3+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 20+(y/maxy + Math.random()/5)*25));
+            background.graphics.beginFill( createjs.Graphics.getHSL((-0.2+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 20+(y/maxy + Math.random()/5)*25));
             background.graphics.drawPolyStar(x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize), y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
         }   
     }
@@ -66,6 +66,16 @@ function init() {
 
     background.graphics.drawPolyStar(w, h-offset, 210, 3, 0, 180/6);
 
+    var edgespacing = 300;
+    var edgerad = 250;
+
+    edgespacing = h*2/Math.floor(h*2/edgespacing);
+
+    for(var i = 0; i < h*2/edgespacing+1; i ++){
+        background.graphics.drawPolyStar(w*2+100, i*edgespacing, edgerad, 6, 0, 180/6-90);
+        background.graphics.drawPolyStar(-100, i*edgespacing, edgerad, 6, 0, 180/6+90);
+    }
+    
     background.cache(0, 0, w*2, h*2);
 
     center = newShape(135, 206, 250, function(){
