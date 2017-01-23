@@ -1,9 +1,10 @@
 
 var stage;
-var circle;
+var background;
 var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
+var title = "Welcome";
 
 function init() {
     stage = new createjs.Stage("canvas");
@@ -18,23 +19,43 @@ function init() {
 
     resize();
 
-    circle = new createjs.Shape();
-    circle.x = stage.canvas.width/2;
-    circle.y = stage.canvas.height/2;
-    stage.addChild(circle);
+    var w = stage.canvas.width/2;
+    var h = stage.canvas.height/2;
+
+    background = new createjs.Shape();
+    stage.addChild(background);
 
     stage.mouseMoveOutside = true;
 
-    circle.graphics.beginFill(bcolor);
+    var titletext = new createjs.Text(title, "bold 30px Overpass Mono", "#e7f5fe");
+    titletext.x = w;
+    titletext.y = h*0.1;
+    titletext.textAlign = "center";
 
-    var w = stage.canvas.width/2;
-    var h = stage.canvas.height/2;
+    stage.addChild(titletext);
+
+    background.graphics.beginFill(bcolor);
+
+    var tsize = 40;
+    var xscl = 1.73/2.1;
+    var maxx = stage.canvas.width/(tsize*(xscl))+2;
+    var maxy = stage.canvas.height/tsize;
+
+    for(var x = 0; x < maxx; x ++){
+        for(var y = -1; y < maxy; y ++){
+            background.graphics.beginFill( createjs.Graphics.getHSL((1.3+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 25+y/maxy*25));
+            background.graphics.drawPolyStar(x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize)*0, y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
+        }   
+    }
+
     var pad = 30;
     var scl = 70;
 
-    circle.graphics.drawRoundRect(pad-w,pad-h, w*2-pad*2, h*2-pad*2, 20);
+    //circle.graphics.drawRoundRect(pad-w,pad-h, w*2-pad*2, h*2-pad*2, 20);
 
-    circle.graphics.beginFill(incolor);
+
+
+    background.graphics.beginFill(incolor);
 
     //circle.graphics.drawRoundRect(pad-w + pad, pad - h + pad, w*2-pad*4, pad*2, 20);
 
@@ -42,7 +63,9 @@ function init() {
 
     var offset = 60;
 
-    circle.graphics.drawPolyStar(0, -offset, 210, 3, 0, 180/6);
+    background.graphics.drawPolyStar(w, h-offset, 210, 3, 0, 180/6);
+
+    background.cache(0, 0, w*2, h*2);
         
 
     var tabs = 3;
@@ -61,6 +84,7 @@ function init() {
         container.x = stage.canvas.width/2;
         container.y = stage.canvas.height/2 - offset;
         shape.graphics.beginFill(incolor);
+
         //hex.graphics.drawCircle(Math.sin(ang)*spacing, Math.cos(ang)*spacing, rad); //drawPolyStar ( x  y  radius  sides  pointSize  angle )
         
         shape.graphics.drawPolyStar(Math.sin(2*Math.PI/tabs*i)*spacing, Math.cos(2*Math.PI/tabs*i)*spacing, rad, 3, 0, -180/6);
@@ -69,7 +93,6 @@ function init() {
 
         shape.on("mouseover", function(evt){
             createjs.Tween.get(containers[index].acontainer)
-            .to({ scaleX: 1.1, scaleY: 1.1 }, smooth, createjs.Ease.getPowInOut(1.5))
             .to({ scaleX: 1.1, scaleY: 1.1 }, smooth, createjs.Ease.getPowInOut(1.5));
         });
 
@@ -83,7 +106,7 @@ function init() {
         container.addChild(shape);
         stage.addChild(container);
 
-        var text = new createjs.Text("something", "bold 20px Overpass", "#e7f5fe");
+        var text = new createjs.Text("something", "bold 20px Overpass Mono", "#e7f5fe");
         text.x = Math.sin(ang)*spacing + shape.x;
         text.y = Math.cos(ang)*spacing + shape.y - 20;
         text.textAlign = "center";
