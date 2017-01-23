@@ -4,7 +4,8 @@ var background;
 var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
-var title = "Welcome";
+var title = "Welcome.";
+var tabtext = ["things", "contact", "projects"];
 
 function init() {
     stage = new createjs.Stage("canvas");
@@ -78,42 +79,67 @@ function init() {
 
         var ang = 2*Math.PI/tabs*i;
 
-        var container = new createjs.Container();
-
-        var shape = new createjs.Shape();
+        const container = new createjs.Container();
         container.x = stage.canvas.width/2;
         container.y = stage.canvas.height/2 - offset;
-        shape.graphics.beginFill(incolor);
+        container.name = "tab" + i;
 
-        //hex.graphics.drawCircle(Math.sin(ang)*spacing, Math.cos(ang)*spacing, rad); //drawPolyStar ( x  y  radius  sides  pointSize  angle )
-        
-        shape.graphics.drawPolyStar(Math.sin(2*Math.PI/tabs*i)*spacing, Math.cos(2*Math.PI/tabs*i)*spacing, rad, 3, 0, -180/6);
+        const shape = new createjs.Shape();
+        shape.cursor = "pointer";
+        shape.x = Math.sin(2*Math.PI/tabs*i)*spacing;
+        shape.y = Math.cos(2*Math.PI/tabs*i)*spacing;
+
+        shape.redOffset = 135;
+        shape.greenOffset = 206;
+        shape.blueOffset = 250;
+
+        //var filter = new createjs.ColorFilter(0.53, 0.8, 0.98, 1);
+       // shape.filters = [filter];
+        const draw = function(){
+            var color = createjs.Graphics.getRGB( 
+            parseInt(shape.redOffset), 
+            parseInt(shape.greenOffset), 
+            parseInt(shape.blueOffset), 
+            1);
+
+            shape.graphics.beginFill(color);
+
+            shape.graphics.drawPolyStar(0, 0, rad, 3, 0, -180/6);
+        }
+
+        shape.updateColor = draw;
+
+        draw();
 
         const index = i;
 
         shape.on("mouseover", function(evt){
-            createjs.Tween.get(containers[index].acontainer)
+            createjs.Tween.get(container)
             .to({ scaleX: 1.1, scaleY: 1.1 }, smooth, createjs.Ease.getPowInOut(1.5));
+
+            createjs.Tween.get(shape)
+            .to({ redOffset: 255 }, smooth, createjs.Ease.getPowInOut(1.5)).addEventListener('change', shape.updateColor);
         });
 
         shape.on("mouseout", function(evt){
-            createjs.Tween.removeTweens(containers[index].acontainer);
+            createjs.Tween.removeTweens(container);
 
-            createjs.Tween.get(containers[index].acontainer)
+            createjs.Tween.get(container)
             .to({ scaleX: 1, scaleY: 1 }, smooth/1.5, createjs.Ease.getPowInOut(1.5));
+
+             createjs.Tween.get(shape)
+            .to({ redOffset: 135 }, smooth, createjs.Ease.getPowInOut(1.5)).addEventListener('change', shape.updateColor);
         });
 
         container.addChild(shape);
         stage.addChild(container);
 
-        var text = new createjs.Text("something", "bold 20px Overpass Mono", "#e7f5fe");
-        text.x = Math.sin(ang)*spacing + shape.x;
-        text.y = Math.cos(ang)*spacing + shape.y - 20;
+        const text = new createjs.Text(tabtext[i], "bold 20px Overpass Mono", "#e7f5fe");
+        text.x = Math.sin(ang)*spacing;
+        text.y = Math.cos(ang)*spacing - 20;
         text.textAlign = "center";
 
         container.addChild(text);
-
-        containers[i] = {acontainer: container, atext: text, ashape: shape};
     }
 
     stage.update();
