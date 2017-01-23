@@ -44,7 +44,7 @@ function init() {
 
     for(var x = 0; x < maxx; x ++){
         for(var y = -1; y < maxy; y ++){
-            background.graphics.beginFill( createjs.Graphics.getHSL((1.3+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 25+y/maxy*25));
+            background.graphics.beginFill( createjs.Graphics.getHSL((1.3+x/maxx/2 + y/maxy/2)*120, 50+x/maxx*50, 20+(y/maxy + Math.random()/5)*25));
             background.graphics.drawPolyStar(x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize), y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
         }   
     }
@@ -116,6 +116,8 @@ function init() {
         const index = i;
 
         shape.on("mouseover", function(evt){
+            createjs.Tween.removeTweens(center);
+
             tween(container)
             .to({ scaleX: 1.1, scaleY: 1.1 }, smooth, createjs.Ease.getPowInOut(1.5));
 
@@ -123,7 +125,7 @@ function init() {
             .to({ r: 255 }, smooth, createjs.Ease.getPowInOut(1.5));
 
             tween(center)
-            .to({ r: 255, b: 250, rotation: 0, scaleX: 2, scaleY : 2}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
+            .to({ r: 255, b: 250,  scaleX: 2, scaleY : 2, rotation: 0}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
         shape.on("mouseout", function(evt){
@@ -137,7 +139,7 @@ function init() {
             .to({ r: 135 }, smooth, createjs.Ease.getPowInOut(1.5));
 
             tween(center)
-            .to({ r: 135, b: 250, rotation: 180, scaleX: 1, scaleY : 1}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
+            .to({ r: 135, b: 250,  scaleX: 1, scaleY : 1, rotation: 180}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
         container.addChild(shape);
