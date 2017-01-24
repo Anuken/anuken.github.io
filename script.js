@@ -2,11 +2,12 @@
 var stage;
 var background;
 var foreground;
+var sides;
 var center;
 var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
-var title = "Welcome.";
+var title = "Title";
 var tabtext = ["things", "contact", "projects"];
 var shadow;
 
@@ -30,9 +31,9 @@ function init() {
     background = new createjs.Shape();
     stage.addChild(background);
 
-    var titletext = new createjs.Text(title, "bold 30px Overpass Mono", "coral");
+    var titletext = new createjs.Text(title, "bold 34px Overpass Mono", "coral");
     titletext.x = w;
-    titletext.y = h*0.05;
+    titletext.y = h*0.07;
     titletext.textAlign = "center";
 
     stage.addChild(titletext);
@@ -40,7 +41,7 @@ function init() {
     background.update = function(){
         var tsize = 100;
         var xscl = 1.73/2.02;
-        var maxx = stage.canvas.width/(tsize*(xscl))+2;
+        var maxx = stage.canvas.width/(tsize*(xscl))+3;
         var maxy = stage.canvas.height/tsize;
 
         background.updateCache();
@@ -53,7 +54,7 @@ function init() {
                 
                 background.graphics.beginFill(
                      createjs.Graphics.getHSL(
-                         (1.5+x/maxx/2 + y/maxy/2)*120 + Math.sin(time/20 + x/10 + y/20)*14+Math.cos(time/10+3)*10 + Math.sin(x/2+time/20)*20+Math.cos(y+time/25)*10,
+                         (1.2+x/maxx/2 + y/maxy/2)*120 + Math.sin(time/20 + x/10 + y/20)*12+Math.cos(time/10+3)*9 + Math.sin(x/2+time/20)*18+Math.cos(y+time/25)*8,
                          50+x/maxx*50, 
                          20+(y/maxy)*25)
                          );
@@ -67,7 +68,7 @@ function init() {
 
     background.update();
 
-    var offset = 60;
+    var offset = 50;
     
 
     //background.graphics.drawPolyStar(0, 0, 300, 5, 0, -180/10);
@@ -121,31 +122,56 @@ function init() {
     //circle.graphics.drawRoundRect(pad-w,pad-h, w*2-pad*2, h*2-pad*2, 20);
 
     foreground = new createjs.Shape();
+
+        
+    
+
     stage.addChild(foreground);
 
     foreground.graphics.beginFill(incolor);
 
-    //circle.graphics.drawRoundRect(pad-w + pad, pad - h + pad, w*2-pad*4, pad*2, 20);
-
-    //circle.graphics.drawCircle(0,0,100);
-
     foreground.graphics.drawPolyStar(w, h-offset, 210, 3, 0, 180/6);
 
-    var edgespacing = 300;
-    var edgerad = 250;
-
-    edgespacing = h*2/Math.floor(h*2/edgespacing);
-
-    for(var i = 0; i < h*2/edgespacing+1; i ++){
-        foreground.graphics.drawPolyStar(w*2+100, i*edgespacing, edgerad, 6, 0, 180/6-90);
-        foreground.graphics.drawPolyStar(-100, i*edgespacing, edgerad, 6, 0, 180/6+90);
-    }
+    foreground.cache(0, 0, w*2, h*2);
     
     shadow = new createjs.Shadow("#111111", 0, 0, 40);
 
-    //foreground.shadow = shadow;
+    sides = newShape(255, 255, 255, function(){
+        var edgespacing = 300;
+        var edgerad = 250;
 
-    foreground.cache(0, 0, w*2, h*2);
+        edgespacing = h*2/Math.floor(h*2/edgespacing);
+
+        sides.graphics.beginFill(incolor);
+
+        for(var i = 0; i < h*2/edgespacing+1; i ++){
+            sides.graphics.drawPolyStar(w+100, i*edgespacing-h, edgerad, 6, 0, 180/6-90);
+            sides.graphics.drawPolyStar(-100-w, +i*edgespacing-h, edgerad, 6, 0, 180/6+90);
+        }
+    });
+    
+    sides.x = w;
+    sides.y = h;
+
+    stage.addChild(sides);
+
+    
+    sides.on("mouseover", function(evt){
+
+        tween(sides)
+        .to({ scaleX: 1.1, scaleY: 1.1 }, 500, createjs.Ease.getPowInOut(1.5));
+    });
+
+    sides.on("mouseout", function(evt){
+        createjs.Tween.removeTweens(sides);
+
+        tween(sides)
+        .to({ scaleX: 1, scaleY: 1 }, 500, createjs.Ease.getPowInOut(1.5));
+    });
+
+    sides.update();
+
+    sides.cache(-w, -h, w*2, h*2);
 
     center = newShape(135, 206, 250, function(){
         center.graphics.clear();
