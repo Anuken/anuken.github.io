@@ -8,6 +8,7 @@ var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
 var title = "Title";
+var font = "Ubuntu";
 var tabtext = ["things", "contact", "projects"];
 var shadow;
 
@@ -31,7 +32,7 @@ function init() {
     background = new createjs.Shape();
     stage.addChild(background);
 
-    var titletext = new createjs.Text(title, "bold 34px Overpass Mono", "coral");
+    var titletext = new createjs.Text(title, "bold 34px " + font, "coral");
     titletext.x = w;
     titletext.y = h*0.07;
     titletext.textAlign = "center";
@@ -44,7 +45,6 @@ function init() {
         var maxx = stage.canvas.width/(tsize*(xscl))+3;
         var maxy = stage.canvas.height/tsize;
 
-        background.updateCache();
         background.graphics.clear();
 
         for(var x = 0; x < maxx; x ++){
@@ -62,8 +62,10 @@ function init() {
                 background.graphics.drawPolyStar(-50+x*(tsize*xscl) + ((y%2 == 0 && x%2==0) || (y%2 == 1 && x%2==1) ? 0 : -xscl*tsize), y*tsize*1.5 + (x % 2 == 0 ? tsize : 0), tsize, 3, 0, x%2 == 0 ? -180/6 : 180/6);
             }   
         }
-    }
 
+        background.updateCache();
+    }
+    
     background.cache(0, 0, w*2, h*2);
 
     background.update();
@@ -248,10 +250,14 @@ function init() {
             .to({ r: 135, g: 206, b: 250,  scaleX: 1, scaleY : 1, rotation: 180}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
+        shape.on("click", function(event){
+            window.location.href = tabtext[index] + ".html";
+        });
+
         container.addChild(shape);
         stage.addChild(container);
 
-        const text = new createjs.Text(tabtext[i], "bold 20px Overpass Mono", "#FFF8DC");
+        const text = new createjs.Text(tabtext[i], "bold 20px " + font, "#FFF8DC");
         text.x = Math.sin(ang)*spacing;
         text.y = Math.cos(ang)*spacing - 20;
         text.textAlign = "center";
@@ -304,14 +310,5 @@ function handleTick() {
 function resize() { 
     stage.canvas.width = window.innerWidth;
     stage.canvas.height = window.innerHeight;
-}
-
-function openTab(name) {
-    var i;
-    var x = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none"; 
-    }
-    document.getElementById(name).style.display = "block"; 
 }
 

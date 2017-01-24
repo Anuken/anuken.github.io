@@ -33,3 +33,12 @@ body {
     margin: 0;
     background-color: white;
 }
+
+.box {
+    background-color: lightskyblue;
+    border: none;
+    border-radius: 16px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+    margin: 16px;
+}
