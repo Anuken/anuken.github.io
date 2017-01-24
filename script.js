@@ -268,8 +268,8 @@ function init() {
     stage.update();
 }
 
-function tween(shape, doloop = false){
-    const t = createjs.Tween.get(shape, {loop: doloop});
+function tween(shape, doloop){
+    const t = createjs.Tween.get(shape, {loop: doloop == true});
     if(shape.update != undefined)
     t.addEventListener('change', shape.update);
     return t;
