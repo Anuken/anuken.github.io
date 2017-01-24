@@ -125,9 +125,6 @@ function init() {
 
     foreground = new createjs.Shape();
 
-        
-    
-
     stage.addChild(foreground);
 
     foreground.graphics.beginFill(incolor);
@@ -197,7 +194,8 @@ function init() {
     var smooth = 190;
     var containers = {};
 
-    for(var i = 0; i < tabs; i ++){
+
+    [0, 1, 2].forEach(function(i) {
 
         var ang = 2*Math.PI/tabs*i;
 
@@ -220,8 +218,6 @@ function init() {
         //shape.shadow = shadow;
 
         shape.update();
-
-        const index = i;
 
         shape.on("mouseover", function(evt){
             createjs.Tween.removeTweens(center);
@@ -251,7 +247,7 @@ function init() {
         });
 
         shape.on("click", function(event){
-            window.location.href = tabtext[index] + ".html";
+            window.location.href = tabtext[i] + ".html";
         });
 
         container.addChild(shape);
@@ -263,7 +259,7 @@ function init() {
         text.textAlign = "center";
 
         container.addChild(text);
-    }
+    });
 
     stage.update();
 }
