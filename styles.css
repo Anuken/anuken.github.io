@@ -34,6 +34,16 @@ body {
     background-color: white;
 }
 
+.noscriptmsg {
+    text-align: center;
+    padding: 100px;
+    margin: 10px;
+    font-family:  Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: lightskyblue;
+    border-radius: 16px;
+}
+
 .box {
     background-color: lightskyblue;
     border: none;
