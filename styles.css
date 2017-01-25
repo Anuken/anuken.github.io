@@ -5,16 +5,22 @@ h1 {
 
 ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
     overflow: hidden;
-    background-color: #333333;
+    background-color: lightgray;
+    border-radius: 16px;
 }
 
 li {
-    float: left;
-    width: 25%;
-    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    background-color: white;
+    margin: 15;
+    padding: 10;
+    border-radius: 12px;
+    border-bottom: 7px coral solid;
+    box-shadow: 0px 0px 9px black;
 }
 
 li a {
@@ -34,6 +40,26 @@ body {
     background-color: white;
 }
 
+p {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+img {
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: left; 
+    color: lightcoral;
+    font-size: 25px;
+}
+
+h2 {
+    text-align: center; 
+    color: lightcoral;
+    font-size: 30px;
+}
+
 .noscriptmsg {
     text-align: center;
     padding: 100px;
@@ -48,7 +74,5 @@ body {
     background-color: lightskyblue;
     border: none;
     border-radius: 16px;
-    width: calc(100% - 32px);
-    height: calc(100% - 32px);
     margin: 16px;
 }
