@@ -33,7 +33,11 @@ p {
 }
 
 img {
-    border-radius: 12px;
+    border-radius: 8px;
+}
+
+div img{
+    width: 200px;
 }
 
 h1 {
@@ -43,9 +47,12 @@ h1 {
 }
 
 h2 {
-    text-align: center; 
+    margin: 20px;
     color: lightcoral;
     font-size: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    border-bottom: 3px lightcoral solid;
 }
 
 button {
