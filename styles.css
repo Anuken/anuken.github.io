@@ -18,21 +18,9 @@ li {
     background-color: white;
     margin: 15;
     padding: 10;
-    border-radius: 12px;
+    border-radius: 8px;
     border-bottom: 7px coral solid;
-    box-shadow: 0px 0px 9px black;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color: #111111;
+    box-shadow: 0px 2px 9px rgba(0,0,0,0.4);
 }
 
 body {
@@ -51,13 +39,34 @@ img {
 h1 {
     text-align: left; 
     color: lightcoral;
-    font-size: 25px;
+    font-size: 24px;
 }
 
 h2 {
     text-align: center; 
     color: lightcoral;
     font-size: 30px;
+}
+
+button {
+    text-align: center;
+    border: none;
+    font-size: 19px;
+    font-family: 'Ubuntu', sans-serif;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 0px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    
+}
+
+button:hover {
+    background-color: gray;
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.4);
 }
 
 .noscriptmsg {
