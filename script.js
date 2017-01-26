@@ -7,7 +7,7 @@ var center;
 var time = 0;
 var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
-var title = "Title";
+var title = "Welcome.";
 var font = "Ubuntu";
 var tabtext = ["things", "contact", "projects"];
 var shadow;
