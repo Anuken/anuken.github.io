@@ -5,8 +5,10 @@ body {
 
 ul {
     list-style-type: none;
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
     overflow: hidden;
     background-color: white;
     border-radius: 16px;
@@ -43,11 +45,11 @@ h1 {
 
 h2 {
     margin: 20px;
-    color: lightcoral;
+    color: crimson;
     font-size: 30px;
     font-family: 'Ubuntu', sans-serif;
-    text-align: left;
     border-bottom: 1px lightgray solid;
+    height: 40px;
 }
 
 .thumbnail:hover {
