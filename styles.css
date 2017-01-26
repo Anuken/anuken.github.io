@@ -1,6 +1,6 @@
-h1 {
-    font-size: 20px;
-    color: #ffffff;
+body {
+    margin: 0;
+    background-color: white;
 }
 
 ul {
@@ -8,7 +8,7 @@ ul {
     margin: 10;
     padding: 10;
     overflow: hidden;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 16px;
 }
 
@@ -21,11 +21,6 @@ li {
     border-radius: 8px;
     border-bottom: 7px coral solid;
     box-shadow: 0px 2px 9px rgba(0,0,0,0.4);
-}
-
-body {
-    margin: 0;
-    background-color: white;
 }
 
 p {
@@ -52,7 +47,7 @@ h2 {
     font-size: 30px;
     font-family: 'Ubuntu', sans-serif;
     text-align: left;
-    border-bottom: 3px lightcoral solid;
+    border-bottom: 1px lightgray solid;
 }
 
 .thumbnail:hover {
@@ -109,6 +104,7 @@ button:hover {
 
 .zoomer {
     cursor: pointer;
+    width: 200px;
     transition: 0.2s;
 }
 
@@ -135,6 +131,7 @@ button:hover {
     max-height: 90%;
     width: auto;
     height: auto;
+    border-radius: 16px;
 }
 
 #caption {
@@ -170,7 +167,7 @@ button:hover {
     top: 25px;
     right: 45px;
     color: #f1f1f1;
-    font-size: 2cm;
+    font-size: 70px;
     font-weight: bold;
     transition: 0.3s;
 }

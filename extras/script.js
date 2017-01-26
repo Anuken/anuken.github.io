@@ -69,7 +69,7 @@ function updateTextColors(){
     var str = text.value,
 
     map = {'ang': "#ff6d85", 'time': "#97e59c", 'sin': "#fcad2d", 'cos': "#fcad2d", 'tan': "#fcad2d", 
-    'sec': "#fcad2d", 'csc': "#fcad2d", 'cot': "#fcad2d", arcsin : "#ff4d16", arccos : "#ff4d16", arctan : "#ff4d16"};
+    'sec': "#fcad2d", 'csc': "#fcad2d", 'cot': "#fcad2d"};
 
     var reg = "";
 
