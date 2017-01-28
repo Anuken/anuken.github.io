@@ -1,6 +1,6 @@
 info face="ExpresswayRg-Regular" size=16 bold=0 italic=0 charset="" unicode=0 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=0,0
 common lineHeight=20 base=16 scaleW=512 scaleH=512 pages=1 packed=0
-page file="testfont.png" id=0 
+page id=0 file="testfont.png"
 chars count=95
 char id=32   x=0     y=0     width=0     height=0     xoffset=0     yoffset=16    xadvance=4     page=0  chnl=0 
 char id=125   x=0     y=0     width=7     height=20     xoffset=0     yoffset=0    xadvance=6     page=0  chnl=0 
