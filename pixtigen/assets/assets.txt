@@ -1,5 +1,10 @@
 d:assets:0:application/unknown
-i:badlogic.jpg:68465:image/jpeg
+d:gui:0:application/unknown
+t:gui/smoothfont.fnt:13262:application/unknown
+t:gui/uiskin.atlas:3894:application/unknown
+i:gui/smoothfont.png:7919:image/png
+i:gui/uiskin.png:20859:image/png
+t:gui/uiskin.json:4000:application/unknown
 t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:770:application/unknown
 t:com/badlogic/gdx/graphics/g3d/particles/particles.vertex.glsl:2886:application/unknown
 t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:5162:application/unknown
