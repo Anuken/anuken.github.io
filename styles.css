@@ -33,10 +33,6 @@ img {
     border-radius: 8px;
 }
 
-div img{
-    width: 200px;
-}
-
 h1 {
     text-align: left; 
     color: lightcoral;
@@ -106,7 +102,10 @@ button:hover {
 
 .zoomer {
     cursor: pointer;
-    width: 200px;
+    max-width: 200px;
+    max-height: 270px;
+    width: auto;
+    height: auto;
     transition: 0.2s;
 }
 

@@ -247,7 +247,8 @@ function init() {
         });
 
         shape.on("click", function(event){
-            window.location.href = tabtext[i] + ".html";
+            //don't want .html extensions when testing locally
+            window.location.href = tabtext[i] + (window.location.href.indexOf("file:///") > -1 ? ".html" : "");
         });
 
         container.addChild(shape);
