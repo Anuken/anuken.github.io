@@ -4799,7 +4799,7 @@ wub,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared
 xub,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit,com/google/web/bindery/event/shared/SimpleEventBus.java,224,-1
 yub,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit,com/google/web/bindery/event/shared/SimpleEventBus.java,32,-1
 zub,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_UmbrellaException_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_UmbrellaException_2_classLit,com/google/web/bindery/event/shared/UmbrellaException.java,27,-1
-Aub,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,io/anuke/pixtigen/client/HtmlLauncher.java,9,-1
+Aub,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,io/anuke/pixtigen/client/HtmlLauncher.java,8,-1
 Bub,com.google.gwt.lang.ClassLiteralHolder::Ljava_io_FilterOutputStream_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Ljava_io_FilterOutputStream_2_classLit,com/google/gwt/emul/java/io/FilterOutputStream.java,32,-1
 Cub,com.google.gwt.lang.ClassLiteralHolder::Ljava_io_InputStream_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Ljava_io_InputStream_2_classLit,com/google/gwt/emul/java/io/InputStream.java,55,-1
 Dub,com.google.gwt.lang.ClassLiteralHolder::Ljava_io_OutputStream_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Ljava_io_OutputStream_2_classLit,com/google/gwt/emul/java/io/OutputStream.java,55,-1
@@ -5289,8 +5289,8 @@ UmbrellaException,,com.google.web.bindery.event.shared.UmbrellaException,,com/go
 jjb,com.google.web.bindery.event.shared.UmbrellaException::UmbrellaException(Ljava/util/Set;) <init>,com.google.web.bindery.event.shared.UmbrellaException,UmbrellaException,com/google/web/bindery/event/shared/UmbrellaException.java,64,0
 a,com.google.web.bindery.event.shared.UmbrellaException::causes,com.google.web.bindery.event.shared.UmbrellaException,causes,com/google/web/bindery/event/shared/UmbrellaException.java,62,-1
 kjb,com.google.web.bindery.event.shared.UmbrellaException::makeMessage(Ljava/util/Set;)Ljava/lang/String;,com.google.web.bindery.event.shared.UmbrellaException,makeMessage,com/google/web/bindery/event/shared/UmbrellaException.java,39,0
-HtmlLauncher,,io.anuke.pixtigen.client.HtmlLauncher,,io/anuke/pixtigen/client/HtmlLauncher.java,9,-1
-FAb,io.anuke.pixtigen.client.HtmlLauncher::HtmlLauncher() <init>,io.anuke.pixtigen.client.HtmlLauncher,HtmlLauncher,io/anuke/pixtigen/client/HtmlLauncher.java,9,0
+HtmlLauncher,,io.anuke.pixtigen.client.HtmlLauncher,,io/anuke/pixtigen/client/HtmlLauncher.java,8,-1
+FAb,io.anuke.pixtigen.client.HtmlLauncher::HtmlLauncher() <init>,io.anuke.pixtigen.client.HtmlLauncher,HtmlLauncher,io/anuke/pixtigen/client/HtmlLauncher.java,8,0
 FilterOutputStream,,java.io.FilterOutputStream,,com/google/gwt/emul/java/io/FilterOutputStream.java,32,-1
 OutputStream,,java.io.OutputStream,,com/google/gwt/emul/java/io/OutputStream.java,55,-1
 PrintStream,,java.io.PrintStream,,com/google/gwt/emul/java/io/PrintStream.java,21,-1
