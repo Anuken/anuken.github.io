@@ -67,20 +67,5 @@ com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
 		label: { font: default-font, fontColor: white },
 		background: default-pane
 	}
-},
-io.anuke.pixtigen.gui.DefaultFileChooser$Style: {
-    default: {
-        pathFieldStyle: default,
-        contentsStyle: default,
-        buttonStyle: default,
-        space: 10,
-        contentsPaneStyle: default
-    }
-},
-io.anuke.pixtigen.gui.ColorPicker$Style: {
-	default: {
-    	colorbox: colorbar
-		border: default-rect
-	}
-},
+}
 }
