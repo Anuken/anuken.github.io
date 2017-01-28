@@ -1,4 +1,5 @@
 d:assets:0:application/unknown
+i:badlogic.jpg:68465:image/jpeg
 t:com/badlogic/gdx/graphics/g3d/particles/particles.fragment.glsl:770:application/unknown
 t:com/badlogic/gdx/graphics/g3d/particles/particles.vertex.glsl:2886:application/unknown
 t:com/badlogic/gdx/graphics/g3d/shaders/default.fragment.glsl:5162:application/unknown
