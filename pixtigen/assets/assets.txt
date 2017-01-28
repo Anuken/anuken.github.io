@@ -1,6 +1,6 @@
 d:assets:0:application/unknown
 d:gui:0:application/unknown
-t:gui/smoothfont.fnt:13264:application/unknown
+t:gui/smoothfont.fnt:13262:application/unknown
 t:gui/uiskin.atlas:3894:application/unknown
 i:gui/smoothfont.png:7919:image/png
 i:gui/uiskin.png:20859:image/png

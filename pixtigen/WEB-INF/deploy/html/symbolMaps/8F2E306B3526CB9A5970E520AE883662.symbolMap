@@ -15609,8 +15609,8 @@ wYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_modules_VertexGUI
 xYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_modules_VertexGUI$9_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_modules_VertexGUI$9_2_classLit,io/anuke/pixtigen/modules/VertexGUI.java,188,-1
 yYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_modules_VertexGUI_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_modules_VertexGUI_2_classLit,io/anuke/pixtigen/modules/VertexGUI.java,24,-1
 zYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_modules_VertexInput_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_modules_VertexInput_2_classLit,io/anuke/pixtigen/modules/VertexInput.java,14,-1
-AYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedFont$PatchedFontData_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedFont$PatchedFontData_2_classLit,io/anuke/pixtigen/util/PatchedFont.java,42,-1
-BYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedFont_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedFont_2_classLit,io/anuke/pixtigen/util/PatchedFont.java,16,-1
+AYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedFont$PatchedFontData_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedFont$PatchedFontData_2_classLit,io/anuke/pixtigen/util/PatchedFont.java,47,-1
+BYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedFont_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedFont_2_classLit,io/anuke/pixtigen/util/PatchedFont.java,17,-1
 CYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedSkin$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedSkin$1_2_classLit,io/anuke/pixtigen/util/PatchedSkin.java,27,-1
 DYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedSkin$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedSkin$2_2_classLit,io/anuke/pixtigen/util/PatchedSkin.java,38,-1
 EYd,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_util_PatchedSkin$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_util_PatchedSkin$3_2_classLit,io/anuke/pixtigen/util/PatchedSkin.java,67,-1
@@ -16622,15 +16622,15 @@ s8d,io.anuke.pixtigen.modules.VertexInput::scrolled(I)Z,io.anuke.pixtigen.module
 t8d,io.anuke.pixtigen.modules.VertexInput::touchDown(IIII)Z,io.anuke.pixtigen.modules.VertexInput,touchDown,io/anuke/pixtigen/modules/VertexInput.java,62,0
 u8d,io.anuke.pixtigen.modules.VertexInput::touchDragged(III)Z,io.anuke.pixtigen.modules.VertexInput,touchDragged,io/anuke/pixtigen/modules/VertexInput.java,109,0
 v8d,io.anuke.pixtigen.modules.VertexInput::touchUp(IIII)Z,io.anuke.pixtigen.modules.VertexInput,touchUp,io/anuke/pixtigen/modules/VertexInput.java,99,0
-PatchedFont,,io.anuke.pixtigen.util.PatchedFont,,io/anuke/pixtigen/util/PatchedFont.java,16,-1
-w8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,38,0
-x8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Lcom/badlogic/gdx/graphics/g2d/TextureRegion;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,26,0
-y8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,22,0
-z8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/graphics/g2d/BitmapFont$BitmapFontData;Lcom/badlogic/gdx/graphics/g2d/TextureRegion;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,30,0
-A8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/graphics/g2d/BitmapFont$BitmapFontData;Lcom/badlogic/gdx/utils/Array;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,34,0
-PatchedFont$PatchedFontData,,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,,io/anuke/pixtigen/util/PatchedFont.java,42,-1
-B8d,io.anuke.pixtigen.util.PatchedFont$PatchedFontData::PatchedFont$PatchedFontData(Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,PatchedFont$PatchedFontData,io/anuke/pixtigen/util/PatchedFont.java,44,0
-C8d,io.anuke.pixtigen.util.PatchedFont$PatchedFontData::load(Lcom/badlogic/gdx/files/FileHandle;Z)V,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,load,io/anuke/pixtigen/util/PatchedFont.java,50,0
+PatchedFont,,io.anuke.pixtigen.util.PatchedFont,,io/anuke/pixtigen/util/PatchedFont.java,17,-1
+w8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,39,0
+x8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Lcom/badlogic/gdx/graphics/g2d/TextureRegion;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,27,0
+y8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,23,0
+z8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/graphics/g2d/BitmapFont$BitmapFontData;Lcom/badlogic/gdx/graphics/g2d/TextureRegion;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,31,0
+A8d,io.anuke.pixtigen.util.PatchedFont::PatchedFont(Lcom/badlogic/gdx/graphics/g2d/BitmapFont$BitmapFontData;Lcom/badlogic/gdx/utils/Array;Z) <init>,io.anuke.pixtigen.util.PatchedFont,PatchedFont,io/anuke/pixtigen/util/PatchedFont.java,35,0
+PatchedFont$PatchedFontData,,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,,io/anuke/pixtigen/util/PatchedFont.java,47,-1
+B8d,io.anuke.pixtigen.util.PatchedFont$PatchedFontData::PatchedFont$PatchedFontData(Lcom/badlogic/gdx/files/FileHandle;Z) <init>,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,PatchedFont$PatchedFontData,io/anuke/pixtigen/util/PatchedFont.java,49,0
+C8d,io.anuke.pixtigen.util.PatchedFont$PatchedFontData::load(Lcom/badlogic/gdx/files/FileHandle;Z)V,io.anuke.pixtigen.util.PatchedFont$PatchedFontData,load,io/anuke/pixtigen/util/PatchedFont.java,55,0
 PatchedSkin,,io.anuke.pixtigen.util.PatchedSkin,,io/anuke/pixtigen/util/PatchedSkin.java,16,-1
 D8d,io.anuke.pixtigen.util.PatchedSkin::PatchedSkin(Lcom/badlogic/gdx/files/FileHandle;) <init>,io.anuke.pixtigen.util.PatchedSkin,PatchedSkin,io/anuke/pixtigen/util/PatchedSkin.java,18,0
 E8d,io.anuke.pixtigen.util.PatchedSkin::getJsonLoader(Lcom/badlogic/gdx/files/FileHandle;)Lcom/badlogic/gdx/utils/Json;,io.anuke.pixtigen.util.PatchedSkin,getJsonLoader,io/anuke/pixtigen/util/PatchedSkin.java,24,0
