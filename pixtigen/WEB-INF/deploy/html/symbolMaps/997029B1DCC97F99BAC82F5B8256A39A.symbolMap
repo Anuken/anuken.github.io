@@ -15711,7 +15711,7 @@ i$d,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared
 j$d,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit,com/google/web/bindery/event/shared/SimpleEventBus.java,224,-1
 k$d,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit,com/google/web/bindery/event/shared/SimpleEventBus.java,32,-1
 l$d,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_web_bindery_event_shared_UmbrellaException_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_web_bindery_event_shared_UmbrellaException_2_classLit,com/google/web/bindery/event/shared/UmbrellaException.java,27,-1
-m$d,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_client_HtmlLauncher$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_client_HtmlLauncher$1_2_classLit,io/anuke/pixtigen/client/HtmlLauncher.java,40,-1
+m$d,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_client_HtmlLauncher$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_client_HtmlLauncher$1_2_classLit,io/anuke/pixtigen/client/HtmlLauncher.java,38,-1
 n$d,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_client_HtmlLauncher_2_classLit,io/anuke/pixtigen/client/HtmlLauncher.java,13,-1
 o$d,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_generator_FilterType$10_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_generator_FilterType$10_2_classLit,io/anuke/pixtigen/generator/FilterType.java,151,-1
 p$d,com.google.gwt.lang.ClassLiteralHolder::Lio_anuke_pixtigen_generator_FilterType$11_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lio_anuke_pixtigen_generator_FilterType$11_2_classLit,io/anuke/pixtigen/generator/FilterType.java,160,-1
@@ -16353,11 +16353,11 @@ g7d,io.anuke.pixtigen.Pixtigen::$resize(Lio/anuke/pixtigen/Pixtigen;II)V,io.anuk
 e7d,io.anuke.pixtigen.Pixtigen::editor,io.anuke.pixtigen.Pixtigen,editor,io/anuke/pixtigen/Pixtigen.java,9,-1
 f7d,io.anuke.pixtigen.Pixtigen::gui,io.anuke.pixtigen.Pixtigen,gui,io/anuke/pixtigen/Pixtigen.java,10,-1
 HtmlLauncher,,io.anuke.pixtigen.client.HtmlLauncher,,io/anuke/pixtigen/client/HtmlLauncher.java,13,-1
-h7d,io.anuke.pixtigen.client.HtmlLauncher::$scaleCanvas(Lio/anuke/pixtigen/client/HtmlLauncher;)V,io.anuke.pixtigen.client.HtmlLauncher,$scaleCanvas,io/anuke/pixtigen/client/HtmlLauncher.java,55,0
+h7d,io.anuke.pixtigen.client.HtmlLauncher::$scaleCanvas(Lio/anuke/pixtigen/client/HtmlLauncher;)V,io.anuke.pixtigen.client.HtmlLauncher,$scaleCanvas,io/anuke/pixtigen/client/HtmlLauncher.java,53,0
 i7d,io.anuke.pixtigen.client.HtmlLauncher::HtmlLauncher() <init>,io.anuke.pixtigen.client.HtmlLauncher,HtmlLauncher,io/anuke/pixtigen/client/HtmlLauncher.java,13,0
-j7d,io.anuke.pixtigen.client.HtmlLauncher::handleResize()V,io.anuke.pixtigen.client.HtmlLauncher,handleResize,io/anuke/pixtigen/client/HtmlLauncher.java,97,0
-HtmlLauncher$1,,io.anuke.pixtigen.client.HtmlLauncher$1,,io/anuke/pixtigen/client/HtmlLauncher.java,40,-1
-k7d,io.anuke.pixtigen.client.HtmlLauncher$1::HtmlLauncher$1(Lio/anuke/pixtigen/client/HtmlLauncher;) <init>,io.anuke.pixtigen.client.HtmlLauncher$1,HtmlLauncher$1,io/anuke/pixtigen/client/HtmlLauncher.java,40,0
+j7d,io.anuke.pixtigen.client.HtmlLauncher::handleResize()V,io.anuke.pixtigen.client.HtmlLauncher,handleResize,io/anuke/pixtigen/client/HtmlLauncher.java,87,0
+HtmlLauncher$1,,io.anuke.pixtigen.client.HtmlLauncher$1,,io/anuke/pixtigen/client/HtmlLauncher.java,38,-1
+k7d,io.anuke.pixtigen.client.HtmlLauncher$1::HtmlLauncher$1(Lio/anuke/pixtigen/client/HtmlLauncher;) <init>,io.anuke.pixtigen.client.HtmlLauncher$1,HtmlLauncher$1,io/anuke/pixtigen/client/HtmlLauncher.java,38,0
 Filter,,io.anuke.pixtigen.generator.Filter,,io/anuke/pixtigen/generator/Filter.java,5,-1
 l7d,io.anuke.pixtigen.generator.Filter::Filter(Lio/anuke/pixtigen/generator/FilterType;) <init>,io.anuke.pixtigen.generator.Filter,Filter,io/anuke/pixtigen/generator/Filter.java,10,0
 a,io.anuke.pixtigen.generator.Filter::enabled,io.anuke.pixtigen.generator.Filter,enabled,io/anuke/pixtigen/generator/Filter.java,8,-1
