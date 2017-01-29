@@ -102,11 +102,26 @@ button:hover {
 
 .zoomer {
     cursor: pointer;
-    max-width: 200px;
-    max-height: 270px;
+    max-width: 210px;
+    max-height: 260px;
     width: auto;
     height: auto;
     transition: 0.2s;
+}
+
+.zoomer.height1{
+    max-width: none;
+    max-height: 220;
+}
+
+.zoomer.height2{
+    max-width: none;
+    max-height: 160;
+}
+
+.zoomer.height3{
+    max-width: none;
+    max-height: 140;
 }
 
 .zoomer:hover {opacity: 0.8;}
