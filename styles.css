@@ -85,7 +85,7 @@ button:hover {
     text-align: center;
     padding: 100px;
     margin: 10px;
-    font-family:  Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
     background-color: lightskyblue;
     border-radius: 16px;
@@ -96,6 +96,11 @@ button:hover {
     border: none;
     border-radius: 16px;
     margin: 16px;
+}
+
+.gif {
+    color: white;
+    opacity: 0.7;
 }
 
 /*MODAL BEGIN*/
@@ -126,22 +131,24 @@ button:hover {
 
 @media only screen and (max-device-width: 480px){
     .zoomer.height1{
-        max-width: 200;
+        max-width: 220;
         max-height: none;
     }
 
     .zoomer.height2{
-        max-width: 200;
+        max-width: 220;
         max-height: none;
     }
 
     .zoomer.height3{
-        max-width: 200;
+        max-width: 220;
         max-height: none;
     }
 }
 
 .zoomer:hover {opacity: 0.8;}
+
+.zoomer.gif:hover {opacity: 1;}
 
 .modal {
     display: none;
