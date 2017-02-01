@@ -131,27 +131,24 @@ button:hover {
 
 @media only screen and (max-device-width: 480px){
     .zoomer.height1{
-        max-width: auto;
+        max-width: 100%;
         max-height: none;
     }
 
     .zoomer.height2{
-        max-width: auto;
+        max-width: 100%;
         max-height: none;
     }
 
     .zoomer.height3{
-        max-width: auto;
+        max-width: 100%;
         max-height: none;
     }
 
-    /*
-    img{
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
+    .zoomer{
+        max-width: 100%;
+        max-height: none;
     }
-    */
 }
 
 .zoomer:hover {opacity: 0.8;}
