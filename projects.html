@@ -5,7 +5,14 @@
 <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <script>
+
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
 window.onload = function() {
+
+    var mob = window.innerWidth <= 800 && window.innerHeight <= 600;
 
     var modal = document.getElementById('modal');
 
@@ -17,6 +24,7 @@ window.onload = function() {
     var modalImg = document.getElementById("modalimg");
     var images = document.getElementsByClassName("zoomer");
     for(var img of images){
+        if(!mob || hasClass(img, "gif"))
         img.onclick = function(){
             modal.style.display = "block";
             modalImg.src = this.src;

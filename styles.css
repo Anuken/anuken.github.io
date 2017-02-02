@@ -225,5 +225,8 @@ button:hover {
 
     .modal-content{
         max-height: 70%;
+        max-width: 85%;
     }
+
+    .zoomer:hover {opacity: 1.0;}
 }
