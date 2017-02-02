@@ -222,4 +222,8 @@ button:hover {
         max-width: 100%;
         max-height: none;
     }
+
+    .modal-content{
+        max-height: 70%;
+    }
 }
