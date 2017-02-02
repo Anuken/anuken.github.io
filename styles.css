@@ -129,32 +129,6 @@ button:hover {
     max-height: 140;
 }
 
-@media only screen and (max-device-width: 480px){
-    .zoomer.height1{
-        max-width: 100%;
-        max-height: none;
-    }
-
-    .zoomer.height2{
-        max-width: 100%;
-        max-height: none;
-    }
-
-    .zoomer.height3{
-        max-width: 100%;
-        max-height: none;
-    }
-
-    .zoomer{
-        max-width: 100%;
-        max-height: none;
-    }
-
-    .modal-content{
-        max-height: 70%;
-    }
-}
-
 .zoomer:hover {opacity: 0.8;}
 
 .zoomer.gif:hover {opacity: 1;}
@@ -228,9 +202,24 @@ button:hover {
     cursor: pointer;
 }
 
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
+@media only screen and (max-device-width: 480px){
+    .zoomer.height1{
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .zoomer.height2{
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .zoomer.height3{
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .zoomer{
+        max-width: 100%;
+        max-height: none;
     }
 }
