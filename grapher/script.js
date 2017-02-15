@@ -13,7 +13,7 @@ var formfunc;
 
 function init() {
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- 		scale = 80;
+ 		scale = 70;
 	}
 	
     stage = new createjs.Stage("canvas");
@@ -51,7 +51,6 @@ function textChange(){
     textarea.value = textarea.value.replace(/[\r\n\v]+/g, '');
     try {
         form = textarea.value;
-        console.log(textarea.value);
         var out = math.compile(form);
         out.eval({ang: 0, time: 0})
         formfunc = out;
