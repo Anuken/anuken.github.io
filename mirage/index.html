@@ -1,0 +1,38 @@
+<script src="pixi.min.js"></script>
+<title>Mirage</title>
+
+<style>
+* {
+    padding: 0; 
+    margin: 0;
+}
+</style>
+
+<script id="shader" type="shader">
+
+precision mediump float;
+
+varying vec2 vTextureCoord;
+varying vec4 vColor;
+
+uniform sampler2D uSampler;
+uniform float time;
+uniform vec2 resolution;
+
+void main(void)
+{
+   vec2 uv = vTextureCoord.xy;
+
+   vec4 fg = texture2D(uSampler, vTextureCoord);
+
+
+   fg.r = uv.y + sin(time*1000.0);
+
+   gl_FragColor = fg;
+}
+
+</script>
+
+<body>
+    <script src="script.js"></script>
+</body>
