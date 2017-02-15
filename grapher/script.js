@@ -103,7 +103,7 @@ function resize() {
 }
 
 function doTick(){
-    dtime ++;
+    dtime = createjs.Ticker.getTime()/1000.0*60.0;
     render();   
 }
 
