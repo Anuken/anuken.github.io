@@ -34,14 +34,13 @@ var context = canvas.getContext('2d');
 var percision = 0.00001;
 var colors = [];
 var logs = [];
-var sines = [];
 var cosines = [];
+var dancer = new Dancer();
 
 for(i = 0; i < size; i++)
 	logs[i] = Math.log(i);
 
 for(i = 0; i < Math.PI*2.0; i += percision){
-    sines[Math.floor(i/percision)] = Math.sin(i);
     cosines[Math.floor(i/percision)] = Math.cos(i);
 }
 
@@ -69,6 +68,7 @@ canvasTex.baseTexture.scaleMode = PIXI.SCALE_MODES.NEAREST;
 var logo = new PIXI.Sprite(canvasTex);
 logo.x = width / 2;
 logo.y = height / 2;
+logo.rotation = Math.PI/4;
 logo.anchor.set(0.5);
 stage.addChild(logo);
 
@@ -85,6 +85,8 @@ function animate() {
 }
 
 animate();
+
+playAudio();
 
 function setPixel(x,y,c) {
     var p=id;
@@ -117,6 +119,7 @@ function updateTex(){
 
     var data = context.getImageData(0, 0, canvas.width, canvas.height);
 
+    for(i = 0; i < 2; i ++)
 	for(x = 0; x < size; x++){
 		for(y = 0; y < size; y++){
 
@@ -145,6 +148,25 @@ function updateTex(){
 		}
 	}
 
+    context.putImageData(data, 0, 0);
+}
+
+function resetTex(){
+    var data = context.getImageData(0, 0, canvas.width, canvas.height);
+
+    for(x = 0; x < size; x ++){
+        for(y = 0; y < size; y ++){
+            colors[y*size + x] = x < e || y < e || x > size-e || y > size-e  ? 0 : rgb(255, 255, 255);
+            var i = colors[y*size + x] == 0 ? 0 : 255;
+
+            data.data[x*4+y*4*size] = i; 
+            data.data[x*4+y*4*size+1] = i; 
+            data.data[x*4+y*4*size+2] = i; 
+            data.data[x*4+y*4*size+3] = i; 
+        }
+    }
+
+    
     context.putImageData(data, 0, 0);
 }
 
@@ -180,4 +202,24 @@ function green(rgb){
 
 function blue(rgb){
     return rgb & 0xFF;
+}
+
+function playAudio(){
+  var a = new Audio();
+  var flip = 1;
+  dancer.load( document.getElementsByTagName('audio')[0] );
+  dancer.play();
+  dancer.after(0, function(){
+      if(bar(0) > 0.06){
+          scale3 += bar(0)*10*flip;
+      }else{
+          flip = -flip;
+      }
+
+      logo.scale.x = logo.scale.y = 1 + bar(1)*2.0;
+  });
+}
+
+function bar(index){
+    return dancer.getFrequency(16*index);
 }
