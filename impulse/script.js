@@ -21,8 +21,8 @@ function init(){
     dancer.load( document.getElementsByTagName('audio')[0] );
 
     var kick = dancer.createKick({
-      onKick: shapeKick,
-      threshold: 0.1,
+      onKick: split,
+      threshold: 0.2,
       frequency: [0, 10]
     });
 
@@ -36,26 +36,33 @@ function init(){
     addShapes();
 }
 
+function split(mag){
+    shapeKick(mag);
+    shapeKick(-mag);
+}
+
 function shapeKick(mag){
 
-    var rot = mag*100;
+    var rot = mag*180 - 90;
 
-    var shape = shape(135, 206, 250, function(){
-        shape.graphics.clear();
+    var tri = shape(135, 206, 250, function(){
+        tri.graphics.clear();
 
-        shape.fill();
+        tri.fill();
 
-        shape.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot);
+        tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
     });
 
-    tween(shape).shrink(300);
+    tri.scaleX = tri.scaleY = 0.7 + Math.abs(mag)/2.0;
 
-    shape.x = w/2 + Math.cos(Math.PI / 180 * rot) * 200;
-    shape.y = h/2 + Math.sin(Math.PI / 180 * rot) * 200;
+    tween(tri).shrink(300);
 
-    shape.update();
+    tri.x = w/2 + Math.cos(Math.PI / 180 * rot) * 200;
+    tri.y = h/2 + Math.sin(Math.PI / 180 * rot) * 200;
 
-    stage.addChild(shape);
+    tri.update();
+
+    stage.addChild(tri);
 }
 
 function setPrototypes(){
@@ -74,11 +81,8 @@ function addShapes(){
 
         center.fill();
 
-        center.graphics.drawPolyStar(0, 0, 50, 3, 0, 180/6);
+        center.graphics.drawCircle(0, 0, 30);
     });
-
-    tween(center)
-    .to({ scaleX: 2, scaleY: 2, r: 255}, 1000, ease.getPowInOut(1.5));
 
     center.x = w/2;
     center.y = h/2;
