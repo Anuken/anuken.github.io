@@ -10,6 +10,13 @@
 
 <script id="shader" type="shader">
 
+const int size = 200;
+const float scale = 2.0;
+const float scale2 = 1200.0;
+const float scale3 = 4.7;
+const float scale4 = 0.0;
+vec3 coords[size*size];
+
 precision mediump float;
 
 varying vec2 vTextureCoord;
@@ -19,16 +26,43 @@ uniform sampler2D uSampler;
 uniform float time;
 uniform vec2 resolution;
 
-void main(void)
-{
+bool zero(vec3 i){
+    return i.x < 0.001;
+}
+
+void main(void){
    vec2 uv = vTextureCoord.xy;
 
-   vec4 fg = texture2D(uSampler, vTextureCoord);
+   for(int x = 0; x < size; x++){
+		for(int y = 0; y < size; y++){
+
+			vec3 p = coords[x + y*size];
 
 
-   fg.r = uv.y + sin(time*1000.0);
+            p.r += 0.01;
+            p.g += 0.01;
+            p.b += 0.01;
 
-   gl_FragColor = fg;
+            
+
+            /*
+			if(p.x == 0.0 && p.y == 0.0 && p.z == 0.0){
+				int randx = int((cos(float(y) * scale2 + 0.0 * scale3 + scale4)) * scale);
+				int randy = int((cos(float(x) * scale2 + 0.0 * scale3 + scale4)) * scale);
+
+				    if(pixmap.getPixel(x + randx, y + randy) == 0 && !(x + randx >= pixmap.getWidth())
+						&& !(x + randx < 0) && !(y + randy >= pixmap.getHeight()) && !(y + randy < 0)){
+					pixmap.drawPixel(x, y, 0);
+					pixmap.drawPixel(x + randx, y + randy, pix);
+			}
+            */
+		}
+	}
+    
+
+    vec4 fg = texture2D(uSampler, vTextureCoord);
+
+    gl_FragColor = fg;
 }
 
 </script>
