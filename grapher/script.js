@@ -12,6 +12,10 @@ var form;
 var formfunc;
 
 function init() {
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ 		scale = 80;
+	}
+	
     stage = new createjs.Stage("canvas");
     
     canvas.style.backgroundColor = document.body.style.backgroundColor;
