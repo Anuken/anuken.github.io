@@ -13,7 +13,7 @@ var formfunc;
 
 function init() {
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- 		scale = 20;
+ 		scale = 70;
 	}
 	
     stage = new createjs.Stage("canvas");
