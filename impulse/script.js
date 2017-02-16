@@ -28,9 +28,55 @@ function init(){
 
     kick.on();
 
+    var tris = []
+
+    var bars = 18;
+    var size = 48;
+
+    for(side in [0, 1])
+    for(index = 0; index < bars; index ++){
+        (function(i, s){
+        
+        var tri = shape(135, 206, 250, function(){
+            tri.graphics.clear();
+
+            tri.fill();
+
+            //tri.graphics.drawPolyStar(0, 0, 120, 3, 0, 180/6 + 90 - s*180);
+            tri.graphics.drawRect(-size/2, -size/2, size, size);
+        });
+
+
+        tri.x = w*s;
+        tri.y = i*size + size/2;
+
+        tri.update();
+
+        stage.addChild(tri);
+        
+        var skick = dancer.createKick({
+            onKick: function(mag){
+            //    createjs.Tween.removeTweens(tri);
+            //    tween(tri).to({ scaleX: 1 + mag*100.0, scaleY: 1 + mag*100.0 }, 50, ease.getPowInOut(1.5));
+            },
+            threshold: 0.0,
+            frequency: [i*16, (i+1)*16]
+        });
+
+        skick.on();
+
+        tris[i + s*bars] = tri;
+
+        }(index, side));
+    }
+
     dancer.play();
     dancer.after(0, function(){
         center.scaleX = center.scaleY = 2.0 + 6*dancer.getFrequency(2, 9);
+        for(i = 0; i < bars; i ++){
+            tris[i].scaleX =  1 + dancer.getFrequency(i*16, i*16 + 16)*100.0;
+            tris[i + bars].scaleX = 1 + dancer.getFrequency(i*16, i*16 + 16)*100.0;
+        }
     });
 
     addShapes();

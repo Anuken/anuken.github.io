@@ -32,13 +32,6 @@ function init() {
     background = new createjs.Shape();
     stage.addChild(background);
 
-    var titletext = new createjs.Text(title, "bold 34px " + font, "coral");
-    titletext.x = w;
-    titletext.y = h*0.07;
-    titletext.textAlign = "center";
-
-    stage.addChild(titletext);
-
     background.update = function(){
         var tsize = 100;
         var xscl = 1.73/2.02;
@@ -49,7 +42,6 @@ function init() {
 
         for(var x = 0; x < maxx; x ++){
             for(var y = -1; y < maxy; y ++){
-                //if(maxy-4-y > Math.sin(time/10 + x)*2+1) continue;
                     
                 
                 background.graphics.beginFill(
@@ -71,13 +63,6 @@ function init() {
     background.update();
 
     var offset = 50;
-    
-
-    //background.graphics.drawPolyStar(0, 0, 300, 5, 0, -180/10);
-
-    //tween(background, true)
-    //.to({scaleX: 1.1, scaleY: 1.1}, 3000, createjs.Ease.getPowInOut(2))
-    //.to({scaleX: 1, scaleY: 1}, 3000, createjs.Ease.getPowInOut(2));
 
     var bcontainer = new createjs.Container();
     bcontainer.x = w;
@@ -93,6 +78,13 @@ function init() {
     tween(bcontainer, true)
     .to({scaleX: 1.09, scaleY: 1.09, rotation: 0}, 6000, createjs.Ease.getPowInOut(2))
     .to({scaleX: 1, scaleY: 1, rotation: 0}, 6000, createjs.Ease.getPowInOut(2));
+
+    var titletext = new createjs.Text(title, "bold 34px " + font, "coral");
+    titletext.x = w;
+    titletext.y = h*0.07;
+    titletext.textAlign = "center";
+
+    stage.addChild(titletext);
 
     var sides = 5;
     var bspace = 280;
