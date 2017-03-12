@@ -2,6 +2,10 @@ var stage;
 var w, h;
 var ease;
 var center;
+var sclr = 1.0;
+var sclg = 1.0;
+var sclb = 1.0;
+var scls = []
 
 function init(){
     stage = new createjs.Stage("canvas");
@@ -18,26 +22,47 @@ function init(){
 
     var dancer = new Dancer();
     var a = new Audio();
-    dancer.load( document.getElementsByTagName('audio')[0] );
+    dancer.load( document.getElementsByTagName('audio')[0]);
+
+    for(i in [0, 1, 2])
+    scls[i] = {r: 1.0, g: 1.0, b: 1.0}
 
     
+    
+   
+
+    
+
     dancer.createKick({
-      onKick: function(mag){split(mag, shapeKick)},
-      threshold: 0.2,
-      frequency: [0, 15]
+      onKick: function(mag){
+          stri(mag, 4.0, 231, 245, 254, 0.3, 1/1.4, 440, 2);
+      },
+      threshold: 0.06,
+      frequency: [10, 40]
     }).on();
-    
 
     dancer.createKick({
-      onKick: function(mag){split(mag, shapeKick2)},
+      onKick: function(mag){
+          stri(mag, 4.0, 255, 127, 80, 0.5, 1.0, 340, 2);
+      },
+      threshold: 0.06,
+      frequency: [10, 25]
+    }).on();
+
+    dancer.createKick({
+      onKick: function(mag){
+          stri(mag, 3.0, 255, 206, 250, 0.5, 1.0, 300, 1);
+      },
       threshold: 0.06,
       frequency: [5, 30]
     }).on();
 
     dancer.createKick({
-      onKick: function(mag){split(mag, shapeKick3)},
-      threshold: 0.07,
-      frequency: [10, 20]
+      onKick: function(mag){
+          stri(mag, 1, 135, 206, 250, 0.7, 1.0/1.1, 200, 0);
+      },
+      threshold: 0.2,
+      frequency: [0, 15]
     }).on();
     
 
@@ -75,22 +100,54 @@ function init(){
         center.scaleX = center.scaleY = 2.0 + 11*dancer.getFrequency(2, 9);
         for(i = 0; i < bars; i ++){
             tris[i].scaleX =  1 + Math.pow(dancer.getFrequency(i*16, i*16 + 16)*120.0, 1.1);
-            tris[i + bars].scaleX = 1 + tris[i].scaleX;
+            tris[i + bars].scaleX = tris[i].scaleX;
         }
     });
 
     addShapes();
 }
 
-function split(mag, out){
-    out(mag);
-    out(-mag);
+function stri(mag, rotscl, r, g, b, scloffset, sclscl, length, index){
+    tri(mag, rotscl, r, g, b, scloffset, sclscl, length, index);
+    tri(-mag, rotscl, r, g, b, scloffset, sclscl, length, index);
+
+    /*
+    if(Math.random() < 0.5){
+        scls[index].r = Math.random()*1.2+0.2;
+        scls[index].b = Math.random()*1.2+0.2;
+        scls[index].r = Math.random()*1.2+0.2;
+    }
+    */
+}
+
+function tri(mag, rotscl, r, g, b, scloffset, sclscl, length, index){
+    var scl = 180*rotscl;
+    var rot = mag*scl + 90;
+
+    var tri = shape(r*scls[index].r, g*scls[index].g, b*scls[index].b, function(){
+        tri.graphics.clear();
+
+        tri.fill();
+
+        tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
+    });
+
+    tri.scaleX = tri.scaleY = scloffset + Math.abs(mag)*sclscl;
+
+    tween(tri).shrink(270);
+
+    tri.x = w/2 + Math.cos(Math.PI / 180 * rot) * length;
+    tri.y = h/2 + Math.sin(Math.PI / 180 * rot) * length;
+
+    tri.update();
+
+    stage.addChild(tri);
 }
 
 function shapeKick3(mag){
 
-    var scl = 180*5;
-    var rot = mag*scl - 90;
+    var scl = 180*4;
+    var rot = mag*scl + 90;
 
     var tri = shape(135, 206, 250, function(){
         tri.graphics.clear();
@@ -114,8 +171,8 @@ function shapeKick3(mag){
 
 function shapeKick2(mag){
 
-    var scl = 180*4;
-    var rot = mag*scl - 90;
+    var scl = 180*3;
+    var rot = mag*scl + 90;
 
     var tri = shape(255, 206, 250, function(){
         tri.graphics.clear();
@@ -137,31 +194,11 @@ function shapeKick2(mag){
     stage.addChild(tri);
 }
 
-function shapeKick(mag){
-
-    var rot = mag*180 - 90;
-
-    var tri = shape(135, 206, 250, function(){
-        tri.graphics.clear();
-
-        tri.fill();
-
-        tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
-    });
-
-    tri.scaleX = tri.scaleY = 0.7 + Math.abs(mag)/1.1;
-
-    tween(tri).shrink(300);
-
-    tri.x = w/2 + Math.cos(Math.PI / 180 * rot) * 200;
-    tri.y = h/2 + Math.sin(Math.PI / 180 * rot) * 200;
-
-    tri.update();
-
-    stage.addChild(tri);
-}
-
 function setPrototypes(){
+    Number.prototype.clamp = function() {
+        return Math.min(Math.max(this, 0.1), 1.0);
+    };
+
     createjs.Tween.prototype.shrink = function(time){
         this.to({ scaleX: 0, scaleY: 0 }, time, ease.getPowInOut(1.5));
     };
@@ -191,6 +228,7 @@ function addShapes(){
 function tween(shape, doloop){
     const t = createjs.Tween.get(shape, {loop: doloop == true});
     if(shape.update != undefined) t.addEventListener('change', shape.update);
+
     return t;
 }
 
@@ -216,6 +254,7 @@ function shape(red, green, blue, updateFunction){
 
 function tick(){
     stage.update();
+    center.update();
 }
 
 function resize() { 
