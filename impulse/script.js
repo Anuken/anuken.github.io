@@ -6,6 +6,9 @@ var sclr = 1.0;
 var sclg = 1.0;
 var sclb = 1.0;
 var scls = []
+var tris = []
+var dancer;
+var bars = 18;
 
 function init(){
     stage = new createjs.Stage("canvas");
@@ -17,21 +20,47 @@ function init(){
     window.addEventListener('resize', resize, false);
 
     resize();
-
+    setupFiles();
     setPrototypes();
 
-    var dancer = new Dancer();
-    var a = new Audio();
-    dancer.load( document.getElementsByTagName('audio')[0]);
+    dancer = new Dancer();
+    dancer.load(document.getElementsByTagName('audio')[0]);
+
+    var size = 48;
+
+    for(side in [0, 1])
+    for(index = 0; index < bars; index ++){
+        (function(i, s){
+        
+        var tri = shape(135, 206, 250, function(){
+            tri.graphics.clear();
+
+            tri.fill();
+            tri.graphics.drawRect(-size/2, -size/2, size, size);
+        });
+
+
+        tri.x = w*s;
+        tri.y = i*size + size/2;
+
+        tri.update();
+
+        stage.addChild(tri);
+
+        tris[i + s*bars] = tri;
+
+        }(index, side));
+    }
+
+    setupDancer();
+
+    addShapes();
+}
+
+function setupDancer(){
 
     for(i in [0, 1, 2])
     scls[i] = {r: 1.0, g: 1.0, b: 1.0}
-
-    
-    
-   
-
-    
 
     dancer.createKick({
       onKick: function(mag){
@@ -64,38 +93,7 @@ function init(){
       threshold: 0.2,
       frequency: [0, 15]
     }).on();
-    
 
-    var tris = []
-
-    var bars = 18;
-    var size = 48;
-
-    for(side in [0, 1])
-    for(index = 0; index < bars; index ++){
-        (function(i, s){
-        
-        var tri = shape(135, 206, 250, function(){
-            tri.graphics.clear();
-
-            tri.fill();
-            tri.graphics.drawRect(-size/2, -size/2, size, size);
-        });
-
-
-        tri.x = w*s;
-        tri.y = i*size + size/2;
-
-        tri.update();
-
-        stage.addChild(tri);
-
-        tris[i + s*bars] = tri;
-
-        }(index, side));
-    }
-
-    dancer.play();
     dancer.after(0, function(){
         center.scaleX = center.scaleY = 2.0 + 11*dancer.getFrequency(2, 9);
         for(i = 0; i < bars; i ++){
@@ -104,7 +102,7 @@ function init(){
         }
     });
 
-    addShapes();
+    dancer.play();
 }
 
 function stri(mag, rotscl, r, g, b, scloffset, sclscl, length, index){
@@ -262,4 +260,78 @@ function resize() {
     stage.canvas.height = window.innerHeight;
     w = window.innerWidth;
     h = window.innerHeight;
+}
+
+function setupFiles(){
+    var dropbox;
+
+    dropbox = document.getElementById("over");
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragleave", dragexit, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+}
+
+function handleFiles(files){
+    var file = files[0];
+    var reader = new FileReader();
+    var audio = document.getElementById('audio');
+
+    dancer.pause();
+    audio.src = URL.createObjectURL(file);
+    dancer.play();
+}
+
+function dragenter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  unfade(document.getElementById("filedrop"));
+}
+
+function dragexit(e) {
+  fade(document.getElementById("filedrop"));
+}
+
+function dragover(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  fade(document.getElementById("filedrop"));
+  var dt = e.dataTransfer;
+  var files = dt.files;
+
+  handleFiles(files);
+}
+
+function fade(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.01){
+            element.style.opacity = 0;
+            element.style.filter = 'alpha(opacity=0)';
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.4;
+    }, 50);
+}
+
+function unfade(element) {
+    console.log("unfading");
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
 }
