@@ -20,13 +20,26 @@ function init(){
     var a = new Audio();
     dancer.load( document.getElementsByTagName('audio')[0] );
 
-    var kick = dancer.createKick({
-      onKick: split,
+    
+    dancer.createKick({
+      onKick: function(mag){split(mag, shapeKick)},
       threshold: 0.2,
-      frequency: [0, 10]
-    });
+      frequency: [0, 15]
+    }).on();
+    
 
-    kick.on();
+    dancer.createKick({
+      onKick: function(mag){split(mag, shapeKick2)},
+      threshold: 0.06,
+      frequency: [5, 30]
+    }).on();
+
+    dancer.createKick({
+      onKick: function(mag){split(mag, shapeKick3)},
+      threshold: 0.07,
+      frequency: [10, 20]
+    }).on();
+    
 
     var tris = []
 
@@ -41,8 +54,6 @@ function init(){
             tri.graphics.clear();
 
             tri.fill();
-
-            //tri.graphics.drawPolyStar(0, 0, 120, 3, 0, 180/6 + 90 - s*180);
             tri.graphics.drawRect(-size/2, -size/2, size, size);
         });
 
@@ -53,17 +64,6 @@ function init(){
         tri.update();
 
         stage.addChild(tri);
-        
-        var skick = dancer.createKick({
-            onKick: function(mag){
-            //    createjs.Tween.removeTweens(tri);
-            //    tween(tri).to({ scaleX: 1 + mag*100.0, scaleY: 1 + mag*100.0 }, 50, ease.getPowInOut(1.5));
-            },
-            threshold: 0.0,
-            frequency: [i*16, (i+1)*16]
-        });
-
-        skick.on();
 
         tris[i + s*bars] = tri;
 
@@ -72,19 +72,69 @@ function init(){
 
     dancer.play();
     dancer.after(0, function(){
-        center.scaleX = center.scaleY = 2.0 + 6*dancer.getFrequency(2, 9);
+        center.scaleX = center.scaleY = 2.0 + 11*dancer.getFrequency(2, 9);
         for(i = 0; i < bars; i ++){
-            tris[i].scaleX =  1 + dancer.getFrequency(i*16, i*16 + 16)*100.0;
-            tris[i + bars].scaleX = 1 + dancer.getFrequency(i*16, i*16 + 16)*100.0;
+            tris[i].scaleX =  1 + Math.pow(dancer.getFrequency(i*16, i*16 + 16)*120.0, 1.1);
+            tris[i + bars].scaleX = 1 + tris[i].scaleX;
         }
     });
 
     addShapes();
 }
 
-function split(mag){
-    shapeKick(mag);
-    shapeKick(-mag);
+function split(mag, out){
+    out(mag);
+    out(-mag);
+}
+
+function shapeKick3(mag){
+
+    var scl = 180*5;
+    var rot = mag*scl - 90;
+
+    var tri = shape(135, 206, 250, function(){
+        tri.graphics.clear();
+
+        tri.fill();
+
+        tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
+    });
+
+    tri.scaleX = tri.scaleY = 0.5 + Math.abs(mag);
+
+    tween(tri).shrink(270);
+
+    tri.x = w/2 + Math.cos(Math.PI / 180 * rot) * 340;
+    tri.y = h/2 + Math.sin(Math.PI / 180 * rot) * 340;
+
+    tri.update();
+
+    stage.addChild(tri);
+}
+
+function shapeKick2(mag){
+
+    var scl = 180*4;
+    var rot = mag*scl - 90;
+
+    var tri = shape(255, 206, 250, function(){
+        tri.graphics.clear();
+
+        tri.fill();
+
+        tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
+    });
+
+    tri.scaleX = tri.scaleY = 0.5 + Math.abs(mag);
+
+    tween(tri).shrink(270);
+
+    tri.x = w/2 + Math.cos(Math.PI / 180 * rot) * 300;
+    tri.y = h/2 + Math.sin(Math.PI / 180 * rot) * 300;
+
+    tri.update();
+
+    stage.addChild(tri);
 }
 
 function shapeKick(mag){
@@ -99,7 +149,7 @@ function shapeKick(mag){
         tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
     });
 
-    tri.scaleX = tri.scaleY = 0.7 + Math.abs(mag)/2.0;
+    tri.scaleX = tri.scaleY = 0.7 + Math.abs(mag)/1.1;
 
     tween(tri).shrink(300);
 
