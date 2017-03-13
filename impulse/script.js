@@ -35,7 +35,7 @@ function init(){
         var tri = shape(135, 206, 250, function(){
              tri.x = w*s;
             tri.y = i*size + size/2;
-            
+
             tri.graphics.clear();
 
             tri.fill();
@@ -269,6 +269,7 @@ function setupFiles(){
     dropbox = document.getElementById("over");
     dropbox.addEventListener("dragenter", dragenter, false);
     dropbox.addEventListener("dragleave", dragexit, false);
+    dropbox.addEventListener("dragexit", dragexit, false);
     dropbox.addEventListener("dragover", dragover, false);
     dropbox.addEventListener("drop", drop, false);
 }
