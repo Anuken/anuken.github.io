@@ -288,11 +288,13 @@ function dragenter(e) {
   e.stopPropagation();
   e.preventDefault();
 
-  unfade(document.getElementById("filedrop"));
+  unfade(document.getElementById("over"));
+  unfade(document.getElementById("back"));
 }
 
 function dragexit(e) {
-  fade(document.getElementById("filedrop"));
+  fade(document.getElementById("back"));
+  fade(document.getElementById("over"));
 }
 
 function dragover(e) {
@@ -303,7 +305,7 @@ function dragover(e) {
 function drop(e) {
   e.stopPropagation();
   e.preventDefault();
-  fade(document.getElementById("filedrop"));
+  dragexit(e);
   var dt = e.dataTransfer;
   var files = dt.files;
 
@@ -327,7 +329,6 @@ function fade(element) {
 function unfade(element) {
     console.log("unfading");
     var op = 0.1;  // initial opacity
-    element.style.display = 'block';
     var timer = setInterval(function () {
         if (op >= 1){
             clearInterval(timer);
