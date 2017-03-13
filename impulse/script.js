@@ -33,15 +33,14 @@ function init(){
         (function(i, s){
         
         var tri = shape(135, 206, 250, function(){
+             tri.x = w*s;
+            tri.y = i*size + size/2;
+            
             tri.graphics.clear();
 
             tri.fill();
             tri.graphics.drawRect(-size/2, -size/2, size, size);
         });
-
-
-        tri.x = w*s;
-        tri.y = i*size + size/2;
 
         tri.update();
 
@@ -99,6 +98,8 @@ function setupDancer(){
         for(i = 0; i < bars; i ++){
             tris[i].scaleX =  1 + Math.pow(dancer.getFrequency(i*16, i*16 + 16)*120.0, 1.1);
             tris[i + bars].scaleX = tris[i].scaleX;
+            tris[i].update();
+            tris[i + bars].update();
         }
     });
 
@@ -208,15 +209,15 @@ function setPrototypes(){
 
 function addShapes(){
     center = shape(135, 206, 250, function(){
+        center.x = w/2;
+        center.y = h/2;
+
         center.graphics.clear();
 
         center.fill();
 
         center.graphics.drawCircle(0, 0, 30);
     });
-
-    center.x = w/2;
-    center.y = h/2;
 
     stage.addChild(center);
 
