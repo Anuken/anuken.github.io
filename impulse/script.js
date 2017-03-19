@@ -8,7 +8,10 @@ var sclb = 1.0;
 var scls = []
 var tris = []
 var dancer;
-var bars = 18;
+var bars = 32;
+var filter;
+var lastc;
+var basec = {r: 115, g: 255, b: 180};
 
 function init(){
     stage = new createjs.Stage("canvas");
@@ -26,14 +29,24 @@ function init(){
     dancer = new Dancer();
     dancer.load(document.getElementsByTagName('audio')[0]);
 
-    var size = 48;
+    var size = 48/1.2;
+
+    var color = 0x00FFFF;
+	var alpha = 1;
+	var blurX = 32;
+	var blurY = 32;
+	var strength = 1;
+	var quality = 1;
+	var inner = false;
+	var knockout = false;
+	filter = new createjs.GlowFilter(color, alpha, blurX, blurY, strength, quality, inner, knockout);
 
     for(side in [0, 1])
     for(index = 0; index < bars; index ++){
         (function(i, s){
         
         var tri = shape(135, 206, 250, function(){
-             tri.x = w*s;
+            tri.x = w*s;
             tri.y = i*size + size/2;
 
             tri.graphics.clear();
@@ -58,12 +71,26 @@ function init(){
 
 function setupDancer(){
 
-    for(i in [0, 1, 2])
+    for(i in [0, 1, 2, 3, 4])
     scls[i] = {r: 1.0, g: 1.0, b: 1.0}
 
     dancer.createKick({
       onKick: function(mag){
-          stri(mag, 4.0, 231, 245, 254, 0.3, 1/1.4, 440, 2);
+          stri(mag, 0.8, 110, 226, 255, 1.1, 1.0/1.1, 500, 0);
+
+          var s = 50.0;
+
+          //basec.r += Math.random()*s*2-s;
+          //basec.g += Math.random()*s*2.0-s;
+          //basec.b += Math.random()*s*2.0-s;
+      },
+      threshold: 0.6,
+      frequency: [0, 15]
+    }).on();
+
+    dancer.createKick({
+      onKick: function(mag){
+          stri(mag, 4.0, 231, 245, 254, 0.3, 1/1.4, 440, 3);
       },
       threshold: 0.06,
       frequency: [10, 40]
@@ -84,26 +111,50 @@ function setupDancer(){
       threshold: 0.06,
       frequency: [5, 30]
     }).on();
-
+    
+    
     dancer.createKick({
       onKick: function(mag){
           stri(mag, 1, 135, 206, 250, 0.7, 1.0/1.1, 200, 0);
+
       },
       threshold: 0.2,
       frequency: [0, 15]
     }).on();
+    
 
     dancer.after(0, function(){
         center.scaleX = center.scaleY = 2.0 + 11*dancer.getFrequency(2, 9);
-        for(i = 0; i < bars; i ++){
-            tris[i].scaleX =  1 + Math.pow(dancer.getFrequency(i*16, i*16 + 16)*120.0, 1.1);
-            tris[i + bars].scaleX = tris[i].scaleX;
-            tris[i].update();
-            tris[i + bars].update();
+        var sc = 14;
+        for(i = 0; i < bars*2; i ++){
+            var index = i%bars;
+
+            var t1 = tris[i];
+
+            t1.scaleX =  1 + Math.pow(dancer.getFrequency(index*sc, (index+1)*sc)*120.0*(1+index/8.0), 1.1);
+            
+            var scl = dancer.getFrequency(index*sc, (index+1)*sc)*20.0*(1+index*1.0);
+
+            var c = mix(scl, 135, 206, 250, basec.r, basec.g, basec.b);
+            c = mix(index/bars*4, c.r, c.g, c.b, 70, 130, 250);
+
+            if(i == 0)
+            lastc = c;
+
+            t1.r = c.r;
+            t1.g = c.g;
+            t1.b = c.b;
+
+            t1.update();
         }
     });
 
     dancer.play();
+}
+
+function mix(scl, r1, g1, b1, r2, g2, b2){
+    var s = 1.0-scl;
+    return {r: r1*s+r2*scl, g: g1*s+g2*scl, b: b1*s+b2*scl};
 }
 
 function stri(mag, rotscl, r, g, b, scloffset, sclscl, length, index){
@@ -126,10 +177,15 @@ function tri(mag, rotscl, r, g, b, scloffset, sclscl, length, index){
     var tri = shape(r*scls[index].r, g*scls[index].g, b*scls[index].b, function(){
         tri.graphics.clear();
 
-        tri.fill();
+        //tri.fill();
+        var s = 1.5;
+
+        tri.graphics.beginFill(tri.genColor(1.7-(lastc.r/255.0*2.0), 0.9+lastc.g/255.0, 2.0-(lastc.b/255.0*2.0)));
 
         tri.graphics.drawPolyStar(0, 0, 140, 3, 0, 180/6 + rot + 90);
     });
+
+    //tri.filters = [filter];
 
     tri.scaleX = tri.scaleY = scloffset + Math.abs(mag)*sclscl;
 
@@ -242,6 +298,10 @@ function shape(red, green, blue, updateFunction){
         return createjs.Graphics.getRGB(parseInt(shape.r), parseInt(shape.g), parseInt(shape.b));
     }
 
+    shape.genColor = function(nr, ng, nb){
+        return createjs.Graphics.getRGB(parseInt(nr*shape.r), parseInt(ng*shape.g), parseInt(nb*shape.b));
+    }
+
     shape.fill = function(){
         shape.graphics.beginFill(shape.modColor());
     }
@@ -327,7 +387,6 @@ function fade(element) {
 }
 
 function unfade(element) {
-    console.log("unfading");
     var op = 0.1;  // initial opacity
     var timer = setInterval(function () {
         if (op >= 1){
