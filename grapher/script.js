@@ -8,6 +8,7 @@ var step = 0.01;
 var scale = 100;
 var dtime = 0;
 var textarea;
+
 var form;
 var formfunc;
 
@@ -21,7 +22,8 @@ function init() {
     canvas.style.backgroundColor = document.body.style.backgroundColor;
 
     textarea = document.getElementById("formarea");
-
+	
+	textarea.value = "sin(1.2*ang)^2 + cos(6*ang+time/100)^3";
     textarea.onkeydown = textChange;
     textarea.onkeyup = textChange;
 
@@ -133,12 +135,9 @@ function render(){
 
 function draw(r1, r2, a){
 		
-	//x1 = (r2*scale*Math.cos(a-step))+offsetx;
-	//y1 = (r2*scale*Math.sin(a-step))+offsety;
 	x2 = (r1*scale*Math.cos(a))+offsetx;
 	y2 = (r1*scale*Math.sin(a))+offsety;
 	
-    //graphics.moveTo(x1, y1);
 	graphics.lineTo(x2, y2);
 }
 

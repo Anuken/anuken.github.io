@@ -20,8 +20,9 @@
     background-color: transparent;
     color: white; /*make this transparent if needed*/
     -webkit-font-smoothing : none;
-    overflow: hidden;
-	
+    position: fixed;
+    white-space: nowrap;
+	overflow: hidden;
 }
 
 .container_row {
@@ -42,7 +43,7 @@
 .layer {
     position: absolute;
     z-index: 2;
-    left: 2;
+    left: 0;
     top: 2;
     height: 24px;
     width: 100%;
@@ -52,6 +53,7 @@
     border-bottom: 2px solid #afceff;
     pointer-events: none;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 body{
@@ -67,7 +69,7 @@ body{
 </style>
 <body onload="init();">
   <div class="container_row">
-    <textarea class="text" id="formarea" spellcheck="false" wrap="soft" autocapitalize="off" autocorrect="off" autocomplete="off">sin(1.2*ang)^2 + cos(6*ang+time/100)^3</textarea>
+    <input class="text" type="text" id="formarea" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" maxlength="140"></input>
     <div class="layer" id="cover"></div>
   </div>
   
