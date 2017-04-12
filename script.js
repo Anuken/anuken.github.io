@@ -9,7 +9,7 @@ var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
 var title = "Welcome.";
 var font = "Ubuntu";
-var tabtext = ["things", "contact", "projects"];
+var tabtext = ["", "resume", "projects"];
 var shadow;
 
 function init() {
@@ -113,8 +113,6 @@ function init() {
     var pad = 30;
     var scl = 70;
 
-    //circle.graphics.drawRoundRect(pad-w,pad-h, w*2-pad*2, h*2-pad*2, 20);
-
     foreground = new createjs.Shape();
 
     stage.addChild(foreground);
@@ -204,13 +202,15 @@ function init() {
             shape.graphics.drawPolyStar(0, 0, rad, 3, 0, -180/6);
         });
 
+        if(tabtext[i] != "")
         shape.cursor = "pointer";
+        
         shape.x = Math.sin(2*Math.PI/tabs*i)*spacing;
         shape.y = Math.cos(2*Math.PI/tabs*i)*spacing;
-        //shape.shadow = shadow;
 
         shape.update();
 
+        if(tabtext[i] != "")
         shape.on("mouseover", function(evt){
             createjs.Tween.removeTweens(center);
 
@@ -224,6 +224,7 @@ function init() {
             .to({ r: 255, g: 127, b: 80,  scaleX: 2, scaleY : 2, rotation: 0}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
+        if(tabtext[i] != "")
         shape.on("mouseout", function(evt){
             createjs.Tween.removeTweens(container);
             createjs.Tween.removeTweens(center);
@@ -238,6 +239,7 @@ function init() {
             .to({ r: 135, g: 206, b: 250,  scaleX: 1, scaleY : 1, rotation: 180}, smooth*1.5, createjs.Ease.getPowInOut(1.5));
         });
 
+        if(tabtext[i] != "")
         shape.on("click", function(event){
             //don't want .html extensions when testing locally
             window.location.href = tabtext[i] + (window.location.href.indexOf("file:///") > -1 ? ".html" : "");
