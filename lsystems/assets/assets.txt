@@ -5,10 +5,10 @@ i:ui/prose_old.png:2027:image/png
 t:ui/smoothfont.fnt:13262:application/unknown
 t:ui/font.fnt:11415:application/unknown
 t:ui/prose_old.fnt:10476:application/unknown
-t:ui/uiskin.atlas:13410:application/unknown
+t:ui/uiskin.atlas:13403:application/unknown
 i:ui/font.png:2860:image/png
 i:ui/smoothfont.png:7919:image/png
-i:ui/uiskin.png:19627:image/png
+i:ui/uiskin.png:18992:image/png
 d:ui/out:0:application/unknown
 i:ui/out/icon-close-over.png:328:image/png
 i:ui/out/progressbar-vertical.png:72:image/png
@@ -24,7 +24,7 @@ i:ui/out/splitpane.png:72:image/png
 i:ui/out/border.9.png:178:image/png
 i:ui/out/progressbar-filled-vertical.png:72:image/png
 i:ui/out/radio-on.png:743:image/png
-i:ui/out/slider-knob.png:163:image/png
+i:ui/out/slider-knob.png:162:image/png
 i:ui/out/scroll-horizontal.9.png:98:image/png
 i:ui/out/icon-file-audio.png:534:image/png
 i:ui/out/color-picker-selector-vertical.png:76:image/png
