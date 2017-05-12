@@ -8,7 +8,7 @@ t:ui/prose_old.fnt:10476:application/unknown
 t:ui/uiskin.atlas:13410:application/unknown
 i:ui/font.png:2860:image/png
 i:ui/smoothfont.png:7919:image/png
-i:ui/uiskin.png:19633:image/png
+i:ui/uiskin.png:19627:image/png
 d:ui/out:0:application/unknown
 i:ui/out/icon-close-over.png:328:image/png
 i:ui/out/progressbar-vertical.png:72:image/png
@@ -104,7 +104,7 @@ i:ui/out/progressbar.png:73:image/png
 i:ui/out/scroll-knob-vertical.9.png:102:image/png
 i:ui/out/icon-undo.png:106:image/png
 i:ui/out/icon-arrow-down.png:115:image/png
-i:ui/out/window.9.png:227:image/png
+i:ui/out/window.9.png:221:image/png
 i:ui/out/icon-star.png:486:image/png
 i:ui/out/touchpad-knob.png:1127:image/png
 i:ui/out/textfield.9.png:231:image/png
