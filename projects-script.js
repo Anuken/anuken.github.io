@@ -34,12 +34,27 @@ window.onload = function() {
     
     for(var gif of gifs){
         (function(img){
+            //TODO display gif loading
+            img.loaded = false;
+
+            var loadtext = document.createElement("div");
+            loadtext.className = "top";
+            loadtext.append("Loading...");
             
-            img.onmouseover = function(){
+            //img.appendChild(loadtext);
+            //img.parentNode.insertBefore(loadtext, img.nextSibling);
+
+            img.onload = ()=>{
+                if(img.loaded){
+                    //TODO
+                }
+            };
+
+            img.onmouseover = ()=>{
                 img.src = img.src.replace("gif-still.png", "gif.gif");
             }
 
-            img.onmouseleave = function(){
+            img.onmouseleave = ()=>{
                 img.src = img.src.replace("gif.gif", "gif-still.png");
             }
 

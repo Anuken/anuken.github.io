@@ -115,6 +115,14 @@ button:hover {
 
 /*MODAL BEGIN*/
 
+.top{
+    position: relative; 
+    top: 100px; 
+    left: 0; 
+    width: 0%;
+    height: 0%;
+}
+
 .zoomer {
     cursor: pointer;
     max-width: 210px;
