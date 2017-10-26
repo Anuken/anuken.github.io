@@ -40,8 +40,6 @@ window.onload = function() {
             var loadtext = document.createElement("div");
             loadtext.className = "top";
             loadtext.append("Loading...");
-            
-            //img.appendChild(loadtext);
             //img.parentNode.insertBefore(loadtext, img.nextSibling);
 
             img.onload = ()=>{

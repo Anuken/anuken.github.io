@@ -9,7 +9,8 @@ var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
 var title = "Welcome.";
 var font = "Ubuntu";
-var tabtext = ["", "resume", "projects"];
+var tabtext = ["games", "resume", "projects"];
+var tablinks = ["https://anuke.itch.io/", "/resume", "/projects"];
 var shadow;
 
 function init() {
@@ -203,7 +204,7 @@ function init() {
         });
 
         if(tabtext[i] != "")
-        shape.cursor = "pointer";
+            shape.cursor = "pointer";
         
         shape.x = Math.sin(2*Math.PI/tabs*i)*spacing;
         shape.y = Math.cos(2*Math.PI/tabs*i)*spacing;
@@ -242,7 +243,7 @@ function init() {
         if(tabtext[i] != "")
         shape.on("click", function(event){
             //don't want .html extensions when testing locally
-            window.location.href = tabtext[i] + (window.location.href.indexOf("file:///") > -1 ? ".html" : "");
+            window.location.href = tablinks[i].startsWith("http") ? tablinks[i] :  (tabtext[i] + (window.location.href.indexOf("file:///") > -1 ? ".html" : ""));
         });
 
         container.addChild(shape);
