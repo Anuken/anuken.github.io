@@ -148,6 +148,7 @@ a.icon span{
     padding-top: 2px;
     background-size: 28px !important;
     background-repeat: no-repeat !important;
+    image-rendering: pixelated;
 }
 
 a.button:hover {
