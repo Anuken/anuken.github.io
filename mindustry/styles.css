@@ -64,10 +64,11 @@ ul.list2 {
 
 li.project {
     font-size: 16px;
-    background-color: white;
-    margin: 12;
-    padding: 12;
-    padding-bottom: 24px;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    margin: 12px;
+    padding: 12px;
+    padding-bottom: 29px;
     padding-top: 8px;
     border-bottom: 7px #f4ba6e solid;
     border-top: 7px #444444 solid;
@@ -83,10 +84,10 @@ div.box {
     font-size: 16px;
     color: white;
     background-color: #2a2a2a;
-    margin: 6;
-    padding: 6;
+    margin: 7px;
+    padding: 5px;
+    margin-left: -6px;
     display: table;
-    padding: 14px;
     border-bottom: 7px #444444 solid;
     box-shadow: 0px 2px 9px rgba(0,0,0,0.4);
 }
