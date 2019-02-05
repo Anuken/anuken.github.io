@@ -9,8 +9,8 @@ var bcolor = "SteelBlue";
 var incolor = "LightSkyBlue";
 var title = "Welcome.";
 var font = "Ubuntu";
-var tabtext = ["games", "resume", "projects"];
-var tablinks = ["https://anuke.itch.io/", "/resume", "/projects"];
+var tabtext = ["games", "about", "projects"];
+var tablinks = ["https://anuke.itch.io/", "/about", "/projects"];
 var shadow;
 
 function init() {
