@@ -15,6 +15,7 @@ var basec = {r: 115, g: 255, b: 180};
 
 function init(){
     stage = new createjs.Stage("canvas");
+    stage.canvas.style.backgroundColor = "#ffffff";
     ease = createjs.Ease;
 
     createjs.Ticker.addEventListener("tick", tick);
@@ -25,10 +26,6 @@ function init(){
     resize();
     setupFiles();
     setPrototypes();
-
-    document.addEventListener("click", e => {
-	    checkLoad();
-    })
 
     addShapes();
 }
