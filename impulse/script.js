@@ -26,47 +26,54 @@ function init(){
     setupFiles();
     setPrototypes();
 
-    dancer = new Dancer();
-    dancer.load(document.getElementsByTagName('audio')[0]);
-
-    var size = 48/1.2;
-
-    var color = 0x00FFFF;
-	var alpha = 1;
-	var blurX = 32;
-	var blurY = 32;
-	var strength = 1;
-	var quality = 1;
-	var inner = false;
-	var knockout = false;
-	filter = new createjs.GlowFilter(color, alpha, blurX, blurY, strength, quality, inner, knockout);
-
-    for(side in [0, 1])
-    for(index = 0; index < bars; index ++){
-        (function(i, s){
-        
-        var tri = shape(135, 206, 250, function(){
-            tri.x = w*s;
-            tri.y = i*size + size/2;
-
-            tri.graphics.clear();
-
-            tri.fill();
-            tri.graphics.drawRect(-size/2, -size/2, size, size);
-        });
-
-        tri.update();
-
-        stage.addChild(tri);
-
-        tris[i + s*bars] = tri;
-
-        }(index, side));
-    }
-
-    setupDancer();
+    document.addEventListener("click", e => {
+	    checkLoad();
+    })
 
     addShapes();
+}
+
+function checkLoad(){
+	if(!dancer){
+		dancer = new Dancer();
+
+		var size = 48/1.2;
+
+		var color = 0x00FFFF;
+		var alpha = 1;
+		var blurX = 32;
+		var blurY = 32;
+		var strength = 1;
+		var quality = 1;
+		var inner = false;
+		var knockout = false;
+		filter = new createjs.GlowFilter(color, alpha, blurX, blurY, strength, quality, inner, knockout);
+
+		for(side in [0, 1])
+		for(index = 0; index < bars; index ++){
+			(function(i, s){
+			
+			var tri = shape(135, 206, 250, function(){
+			    tri.x = w*s;
+			    tri.y = i*size + size/2;
+
+			    tri.graphics.clear();
+
+			    tri.fill();
+			    tri.graphics.drawRect(-size/2, -size/2, size, size);
+			});
+
+			tri.update();
+
+			stage.addChild(tri);
+
+			tris[i + s*bars] = tri;
+
+			}(index, side));
+		}
+    
+    	setupDancer();
+	}
 }
 
 function setupDancer(){
@@ -335,12 +342,16 @@ function setupFiles(){
 }
 
 function handleFiles(files){
+	var loaded = dancer != undefined
+	checkLoad();
+
     var file = files[0];
     var reader = new FileReader();
     var audio = document.getElementById('audio');
 
     dancer.pause();
     audio.src = URL.createObjectURL(file);
+    if(!loaded) dancer.load(audio)
     dancer.play();
 }
 
