@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Soul Legacy</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" charset="utf-8" src="app.js"></script>
+  </head>
+  <body onload="main()" style="margin: 0; padding: 0; overflow: hidden; background-color:black;">
+    <div>
+      <canvas id="main-canvas" width="800" height="600" oncontextmenu="return false;"></canvas>
+    </div>
+   <script>
+      var keys = [27, 38, 37, 39, 40, 17, 9];
+
+      function handleMouseDown(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        evt.target.style.cursor = 'default';
+        window.focus(); 
+      }
+
+      function handleMouseUp(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        evt.target.style.cursor = '';
+      }
+      
+      
+      function preventUseOfDefaultKeys(event) {
+  		 if (keys.indexOf(event.keyCode) != -1 || event.ctrlKey){
+  	       event.preventDefault();
+   		 }
+ 	  }
+ 	  
+ 	  document.getElementById('main-canvas').addEventListener('mousedown', handleMouseDown, false);
+      document.getElementById('main-canvas').addEventListener('mouseup', handleMouseUp, false);
+</script>
+  </body>
+</html>
